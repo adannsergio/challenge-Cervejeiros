@@ -22,16 +22,16 @@ Em caso de dúvidas abra uma issue que assim que possível iremos responder e en
 
 ---
 
-***Traduzindo o texto acima em requisitos do sistema:***
+***O texto acima foi traduzido em requisitos do sistema  (alguns requisitos foram supostos):***
 
 **Requisitos funcionais:**
-- [ ] O usuário deve conseguir visualiar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
+- [ ] O usuário deve conseguir visualizar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
 - [ ] O usuário deve conseguir selecionar uma cerveja, na Lista de Cervejas, e visualizar em uma tela própria os Detalhes da Cerveja selecionada: imagem, nome, descrição, ingredientes; *outros itens poderão ser adicionados*
 - [ ] O usuário deve conseguir visualizar uma Lista de Cervejas Favoritas
-- [ ] O usuário deve conseguir adicionar um cerveja na Lista de Cervejas Favoritas quando estiver visualizando os detalhes dessa cerveja
+- [ ] O usuário deve conseguir adicionar uma cerveja na Lista de Cervejas Favoritas quando estiver visualizando os detalhes dessa cerveja
 - [ ] O usuário deve conseguir deslizar a Lista de Cervejas para baixo, e assim visualizar mais cervejas disponíveis no catálogo online da Cervejeiros SA
 - [ ] O usuário deve conseguir buscar por nome de cervejas, em todo o catálogo online da Cervejeiros SA
-- [ ] O usuário deve conseguir filtrar cervejas na Lista de Cervejas do catálogo Cervejeiros SA
+- [ ] O usuário deve conseguir filtrar cervejas na Lista de Cervejas do catálogo Cervejeiros SA; *parâmetros de filtro a definir*
 
 **Requisitos não funcionais:**
 - [ ] Arquitetura MVP (Model-View-Presenter)
