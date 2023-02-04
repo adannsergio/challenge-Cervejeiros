@@ -1,4 +1,6 @@
-# Catálogo de cervejas
+***Texto original do desafio:***
+
+**Catálogo de cervejas**
 
 A ‘Cervejeiros SA’ está querendo inovar no mercado dos entusiastas de cervejas. Para isso, ficou decidido que a criação de uma aplicação mobile, que permita aos usuários consultarem informações sobre as cervejas existentes, é a melhor forma de se fazer isso.
 
@@ -17,3 +19,22 @@ A API e sua documentação pode ser acessada neste endereço: https://punkapi.co
 Dúvidas
 
 Em caso de dúvidas abra uma issue que assim que possível iremos responder e entrar em contato.
+
+---
+
+***Traduzindo o texto acima em requisitos do sistema:***
+
+**Requisitos funcionais:**
+- [ ] O usuário deve conseguir visualiar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
+- [ ] O usuário deve conseguir selecionar uma cerveja, na Lista de Cervejas, e visualizar em uma tela própria os Detalhes da Cerveja selecionada: imagem, nome, descrição, ingredientes; *outros itens poderão ser adicionados*
+- [ ] O usuário deve conseguir visualizar uma Lista de Cervejas Favoritas
+- [ ] O usuário deve conseguir adicionar um cerveja na Lista de Cervejas Favoritas quando estiver visualizando os detalhes dessa cerveja
+- [ ] O usuário deve conseguir deslizar a Lista de Cervejas para baixo, e assim visualizar mais cervejas disponíveis no catálogo online da Cervejeiros SA
+- [ ] O usuário deve conseguir buscar por nome de cervejas, em todo o catálogo online da Cervejeiros SA
+- [ ] O usuário deve conseguir filtrar cervejas na Lista de Cervejas do catálogo Cervejeiros SA
+
+**Requisitos não funcionais:**
+- [ ] Arquitetura MVP (Model-View-Presenter)
+- [ ] O usuário deve conseguir acessar a Lista de Cervejas Favoritas a qualquer momento
+- [ ] Utilizar a API PunkAPI
+
