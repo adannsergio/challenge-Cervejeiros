@@ -38,3 +38,7 @@ Em caso de dúvidas abra uma issue que assim que possível iremos responder e en
 - [ ] O usuário deve conseguir acessar a Lista de Cervejas Favoritas a qualquer momento
 - [ ] Utilizar a API PunkAPI
 
+---
+
+**Nota:**
+*Esse aplicativo foi desenvolvido como um desafio pessoal do autor deste repositório. Não há intenção em submter o código fonte, ou qualquer outra informação referente para a pessoa, ou empresa, que publicou o desafio inicial. Caso seja um candidato a vaga proposta, não copie ou reproduza diretamente o que foi feito neste repositório; sinta-se livre para estudar, realizar críticas e submenter mudanças, mas não use como referência.*
