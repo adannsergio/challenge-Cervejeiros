@@ -22,7 +22,7 @@ Em caso de dúvidas abra uma issue que assim que possível iremos responder e en
 
 ---
 
-***O texto acima foi traduzido em requisitos do sistema  (alguns requisitos foram supostos):***
+***O texto acima foi traduzido em requisitos do sistema  (alguns detalhes foram supostos):***
 
 **Requisitos funcionais:**
 - [ ] O usuário deve conseguir visualizar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
