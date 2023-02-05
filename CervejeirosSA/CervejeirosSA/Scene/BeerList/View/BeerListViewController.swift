@@ -8,6 +8,7 @@
 import UIKit
 
 class BeerListViewController: UIViewController {
+    
     private var beerListView: BeerListView
     
     override func viewDidLoad() {
@@ -19,6 +20,7 @@ class BeerListViewController: UIViewController {
         self.beerListView = BeerListView()
         
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -30,4 +32,5 @@ class BeerListViewController: UIViewController {
     }
     
 }
+
 

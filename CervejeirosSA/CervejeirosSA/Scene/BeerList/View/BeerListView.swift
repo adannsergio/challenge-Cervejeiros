@@ -8,6 +8,11 @@
 import UIKit
 
 class BeerListView: UIView {
+    
+    enum Section {
+        case main
+    }
+    
     lazy var collectionViewLayout: UICollectionViewLayout = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         return UICollectionViewCompositionalLayout.list(using: config)
@@ -19,14 +24,39 @@ class BeerListView: UIView {
         return view
     }()
     
+    var dataSource: UICollectionViewDiffableDataSource<Section, Int>! = nil
+    
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
         viewCodeSetup()
+        collectionView.delegate = self
+        configureDataSource()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Int> { (cell, indexPath, item) in
+            var content = cell.defaultContentConfiguration()
+            content.text = "\(item)"
+            cell.contentConfiguration = content
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, identifier: Int) -> UICollectionViewCell? in
+            
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: identifier)
+        }
+        
+        // initial data
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(Array(0..<94))
+        dataSource.apply(snapshot, animatingDifferences: false)
+        
     }
 }
 
@@ -46,5 +76,11 @@ extension BeerListView: ViewCodeProtocol {
         backgroundColor = .red
         
         collectionView.backgroundColor = .systemGray
+    }
+}
+
+extension BeerListView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
