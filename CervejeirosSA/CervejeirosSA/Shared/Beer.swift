@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Beer: Hashable {
+struct Beer: Codable {
     let id: Int?
     let name: String?
     let tagline: String?

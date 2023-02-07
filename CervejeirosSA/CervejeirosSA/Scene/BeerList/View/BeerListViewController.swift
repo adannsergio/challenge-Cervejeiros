@@ -11,9 +11,15 @@ class BeerListViewController: UIViewController {
     
     private var beerListView: BeerListView
     
+    private let presenter = BeerListPresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        presenter.delegate = self
+        beerListView.delegate = self
+        
+        presenter.fetchBeers()
     }
     
     init() {
@@ -33,4 +39,16 @@ class BeerListViewController: UIViewController {
     
 }
 
+extension BeerListViewController: BeerListPresenterDelegate {
+    func presentBeerList(data: [BeerListData], page: Int) {
+        DispatchQueue.main.async {
+            self.beerListView.updateList(beers: data, from: page)
+        }
+    }
+}
 
+extension BeerListViewController: BeerListViewDelegate {
+    func fetchNewPageOfbeers() {
+        presenter.fetchBeers()
+    }
+}

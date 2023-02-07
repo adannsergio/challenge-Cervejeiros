@@ -7,11 +7,22 @@
 
 import UIKit
 
+protocol BeerListViewDelegate: AnyObject {
+    func fetchNewPageOfbeers()
+}
 class BeerListView: UIView {
     
     enum Section {
         case main
     }
+    
+    weak var delegate: BeerListViewDelegate?
+    
+    lazy var snapshot: NSDiffableDataSourceSnapshot<Section, BeerListData> = {
+        var diffableDataSource = NSDiffableDataSourceSnapshot<Section, BeerListData>()
+        diffableDataSource.appendSections([.main])
+        return diffableDataSource
+    }()
     
     lazy var collectionViewLayout: UICollectionViewLayout = {
         let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -24,14 +35,14 @@ class BeerListView: UIView {
         return view
     }()
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Int>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<Section, BeerListData>! = nil
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
         viewCodeSetup()
+        
         collectionView.delegate = self
-        configureDataSource()
     }
     
     required init?(coder: NSCoder) {
@@ -39,24 +50,44 @@ class BeerListView: UIView {
     }
     
     func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Int> { (cell, indexPath, item) in
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, BeerListData> { (cell, indexPath, item) in
             var content = cell.defaultContentConfiguration()
-            content.text = "\(item)"
+            content.text = "\(item.name)"
+            content.secondaryText = "\(item.tagline)"
             cell.contentConfiguration = content
+            cell.accessories = [UICellAccessory.disclosureIndicator()]
         }
         
-        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, identifier: Int) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, BeerListData>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, identifier: BeerListData) -> UICollectionViewCell? in
             
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: identifier)
         }
         
-        // initial data
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(Array(0..<94))
+        // initial empty data
         dataSource.apply(snapshot, animatingDifferences: false)
         
+    }
+    
+    func updateList(beers: [BeerListData], from pageNumber: Int) {
+        snapshot.appendItems(beers)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension BeerListView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        self.collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        let itemsDisplayed = indexPath.row
+        let itemsAvailableInSnapshot = snapshot.numberOfItems
+        
+        if itemsDisplayed == (itemsAvailableInSnapshot - 1) { delegate?.fetchNewPageOfbeers() }
     }
 }
 
@@ -73,14 +104,6 @@ extension BeerListView: ViewCodeProtocol {
     }
     
     func setAdditionalConfiguration() {
-        backgroundColor = .red
-        
-        collectionView.backgroundColor = .systemGray
-    }
-}
-
-extension BeerListView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.collectionView.deselectItem(at: indexPath, animated: true)
+        configureDataSource()
     }
 }
