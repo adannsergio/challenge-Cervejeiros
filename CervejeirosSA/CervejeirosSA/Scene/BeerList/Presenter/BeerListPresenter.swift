@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BeerListPresenterDelegate: AnyObject {
-    func presentBeerList(data: [BeerListData], page: Int)
+    func presentBeerList(data: [BeerListData])
 }
 
 class BeerListPresenter {
@@ -30,7 +30,7 @@ class BeerListPresenter {
             do {
                 let beers = try JSONDecoder().decode([Beer].self, from: data)
                 sSelf.page += 1
-                sSelf.delegate?.presentBeerList(data: BeerListData.cast(from: beers), page: sSelf.page)
+                sSelf.delegate?.presentBeerList(data: BeerListData.cast(from: beers))
             }
             catch {
                 print(error)

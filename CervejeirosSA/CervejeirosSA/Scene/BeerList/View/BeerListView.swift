@@ -69,7 +69,7 @@ class BeerListView: UIView {
         
     }
     
-    func updateList(beers: [BeerListData], from pageNumber: Int) {
+    func updateList(beers: [BeerListData]) {
         snapshot.appendItems(beers)
         dataSource.apply(snapshot, animatingDifferences: true)
     }

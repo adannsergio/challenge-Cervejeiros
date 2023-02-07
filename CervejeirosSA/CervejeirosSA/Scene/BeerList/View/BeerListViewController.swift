@@ -40,9 +40,9 @@ class BeerListViewController: UIViewController {
 }
 
 extension BeerListViewController: BeerListPresenterDelegate {
-    func presentBeerList(data: [BeerListData], page: Int) {
+    func presentBeerList(data: [BeerListData]) {
         DispatchQueue.main.async {
-            self.beerListView.updateList(beers: data, from: page)
+            self.beerListView.updateList(beers: data)
         }
     }
 }
