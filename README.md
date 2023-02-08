@@ -25,20 +25,20 @@ Em caso de dúvidas abra uma issue que assim que possível iremos responder e en
 ***O texto acima foi traduzido em requisitos do sistema  (alguns detalhes foram supostos):***
 
 **Requisitos funcionais:**
-- [ ] O usuário deve conseguir visualizar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
+- [x] O usuário deve conseguir visualizar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
 - [ ] O usuário deve conseguir selecionar uma cerveja, na Lista de Cervejas, e visualizar em uma tela própria os Detalhes da Cerveja selecionada: imagem, nome, descrição, ingredientes; *outros itens poderão ser adicionados*
 - [ ] O usuário deve conseguir visualizar uma Lista de Cervejas Favoritas
 - [ ] O usuário deve conseguir adicionar uma cerveja na Lista de Cervejas Favoritas quando estiver visualizando os detalhes dessa cerveja
-- [ ] O usuário deve conseguir deslizar a Lista de Cervejas para baixo, e assim visualizar mais cervejas disponíveis no catálogo online da Cervejeiros SA
+- [x] O usuário deve conseguir deslizar a Lista de Cervejas para baixo, e assim visualizar mais cervejas disponíveis no catálogo online da Cervejeiros SA
 - [ ] O usuário deve conseguir buscar por nome de cervejas, em todo o catálogo online da Cervejeiros SA
 - [ ] O usuário deve conseguir filtrar cervejas na Lista de Cervejas do catálogo Cervejeiros SA; *parâmetros de filtro a definir*
 
 **Requisitos não funcionais:**
-- [ ] Arquitetura MVP (Model-View-Presenter)
+- [ ] Arquitetura MVP (Model-View-Presenter); *Na verdade MVP nesse caso é um design pattern, não uma arquitetura*
 - [ ] O usuário deve conseguir acessar a Lista de Cervejas Favoritas a qualquer momento
-- [ ] Utilizar a API PunkAPI
+- [x] Utilizar a API PunkAPI
 
 ---
 
 **Nota:**
-*Esse aplicativo foi desenvolvido como um desafio pessoal do autor deste repositório. Não há intenção em submter o código fonte, ou qualquer outra informação referente para a pessoa, ou empresa, que publicou o desafio inicial. Caso seja um candidato a vaga proposta, não copie ou reproduza diretamente o que foi feito neste repositório; sinta-se livre para estudar, realizar críticas e submenter mudanças, mas não use como referência.*
+*Esse repositório faz parte de uma série de resoluções de desafios técnicos para estudos, não há intenção de submissão e pleito de vaga, ou seja: **submeta mudanças, sugira diferentes abordagens, estude, mas não reproduza no seu processo seletivo***
