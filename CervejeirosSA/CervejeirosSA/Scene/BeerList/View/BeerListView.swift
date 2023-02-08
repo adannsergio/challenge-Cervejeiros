@@ -10,6 +10,7 @@ import UIKit
 protocol BeerListViewDelegate: AnyObject {
     func fetchNewPageOfbeers()
 }
+
 class BeerListView: UIView {
     
     enum Section {
@@ -84,10 +85,13 @@ extension BeerListView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        let itemsDisplayed = indexPath.row
-        let itemsAvailableInSnapshot = snapshot.numberOfItems
         
-        if itemsDisplayed == (itemsAvailableInSnapshot - 1) { delegate?.fetchNewPageOfbeers() }
+        // indexPath starts in zero, so adding one just for convenience
+        let nextItem = indexPath.row + 1
+        
+        let endOfCollectionAvailable = snapshot.numberOfItems
+        
+        if nextItem == endOfCollectionAvailable { delegate?.fetchNewPageOfbeers() }
     }
 }
 
