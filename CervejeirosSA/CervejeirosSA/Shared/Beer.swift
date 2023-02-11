@@ -12,4 +12,9 @@ struct Beer: Codable {
     let name: String?
     let tagline: String?
     let abv: Double?
+    let ibu: Double?
+    let description: String?
+    let foodPairing: [String]?
+    let brewerTips: String?
+    let image_url: URL?
 }
