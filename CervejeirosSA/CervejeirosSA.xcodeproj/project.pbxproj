@@ -19,6 +19,8 @@
 		1822E82D2990AD9000757FF0 /* BeerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822E82C2990AD9000757FF0 /* BeerListViewModel.swift */; };
 		184275A32997F893004961F6 /* BeerListCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A22997F893004961F6 /* BeerListCollectionViewDataSource.swift */; };
 		184275A52997F8B2004961F6 /* BeerListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A42997F8B2004961F6 /* BeerListCollectionView.swift */; };
+		184275A729982FE1004961F6 /* BeerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A629982FE1004961F6 /* BeerDetailViewModel.swift */; };
+		184275AA29983148004961F6 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A929983148004961F6 /* BeerDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		1822E82C2990AD9000757FF0 /* BeerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListViewModel.swift; sourceTree = "<group>"; };
 		184275A22997F893004961F6 /* BeerListCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		184275A42997F8B2004961F6 /* BeerListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListCollectionView.swift; sourceTree = "<group>"; };
+		184275A629982FE1004961F6 /* BeerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewModel.swift; sourceTree = "<group>"; };
+		184275A929983148004961F6 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,8 @@
 		18135B74299355CD00E40021 /* BeerDetail */ = {
 			isa = PBXGroup;
 			children = (
+				184275A829982FE7004961F6 /* Model */,
+				184275AB2998314C004961F6 /* View */,
 			);
 			path = BeerDetail;
 			sourceTree = "<group>";
@@ -95,9 +101,9 @@
 		1822E81E298F4B0300757FF0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				18135B74299355CD00E40021 /* BeerDetail */,
 				1822E824298F595900757FF0 /* LaunchScreen */,
 				1822E823298F593900757FF0 /* BeerList */,
+				18135B74299355CD00E40021 /* BeerDetail */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -152,6 +158,7 @@
 		1822E8282990442500757FF0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1822E826299043AD00757FF0 /* Beer.swift */,
 				1822E82C2990AD9000757FF0 /* BeerListViewModel.swift */,
 			);
 			path = Model;
@@ -168,9 +175,24 @@
 		1822E82E2990B55F00757FF0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				1822E826299043AD00757FF0 /* Beer.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		184275A829982FE7004961F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				184275A629982FE1004961F6 /* BeerDetailViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		184275AB2998314C004961F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				184275A929983148004961F6 /* BeerDetailViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184275AA29983148004961F6 /* BeerDetailViewController.swift in Sources */,
 				1822E821298F4B8200757FF0 /* BeerListContainer.swift in Sources */,
 				1822E82B2990784100757FF0 /* BeerListPresenter.swift in Sources */,
 				1822E827299043AD00757FF0 /* Beer.swift in Sources */,
@@ -252,6 +275,7 @@
 				1822E82D2990AD9000757FF0 /* BeerListViewModel.swift in Sources */,
 				1822E808298DFDDC00757FF0 /* AppDelegate.swift in Sources */,
 				184275A52997F8B2004961F6 /* BeerListCollectionView.swift in Sources */,
+				184275A729982FE1004961F6 /* BeerDetailViewModel.swift in Sources */,
 				1822E80A298DFDDC00757FF0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

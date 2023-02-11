@@ -42,6 +42,10 @@ class BeerListViewController: UIViewController {
 }
 
 extension BeerListViewController: BeerListPresenterDelegate {
+    func pushDetails(of beer: BeerDetailViewModel) {
+        // TODO: - Apresentar a tela de detalhes da cerveja selecionada.
+    }
+    
     func newList(of beers: [BeerListViewModel]) {
         DispatchQueue.main.async {
             self.beerListDataSource.appendList(of: beers)

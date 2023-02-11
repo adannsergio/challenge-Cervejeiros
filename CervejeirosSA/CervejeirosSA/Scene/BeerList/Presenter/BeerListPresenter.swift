@@ -9,6 +9,7 @@ import Foundation
 
 protocol BeerListPresenterDelegate: AnyObject {
     func newList(of beers: [BeerListViewModel])
+    func pushDetails(of beer: BeerDetailViewModel)
 }
 
 class BeerListPresenter {
@@ -38,4 +39,6 @@ class BeerListPresenter {
         }
         task.resume()
     }
+    
+    // TODO: - Trazer a lógica de iteração do usuário na tela para a camada de apresentação :)
 }
