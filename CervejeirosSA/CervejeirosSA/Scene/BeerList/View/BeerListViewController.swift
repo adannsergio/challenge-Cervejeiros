@@ -9,24 +9,26 @@ import UIKit
 
 class BeerListViewController: UIViewController {
     
-    private var beerListView: BeerListView
-    
     private let presenter = BeerListPresenter()
+    
+    private let containerView = BeerListContainer()
+    
+    lazy var beerListDataSource: BeerListCollectionViewDataSource = {
+        let dataSource = BeerListCollectionViewDataSource(for: containerView.beerListCollectionView)
+        return dataSource
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter.delegate = self
-        beerListView.delegate = self
+        containerView.beerListCollectionView.delegate = self
         
-        presenter.fetchBeers()
+        presenter.getBeers()
     }
     
     init() {
-        self.beerListView = BeerListView()
-        
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -34,21 +36,34 @@ class BeerListViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = beerListView
+        self.view = containerView
     }
     
 }
 
 extension BeerListViewController: BeerListPresenterDelegate {
-    func presentBeerList(data: [BeerListData]) {
+    func newList(of beers: [BeerListViewModel]) {
         DispatchQueue.main.async {
-            self.beerListView.updateList(beers: data)
+            self.beerListDataSource.appendList(of: beers)
         }
     }
 }
 
-extension BeerListViewController: BeerListViewDelegate {
-    func fetchNewPageOfbeers() {
-        presenter.fetchBeers()
+extension BeerListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        self.containerView.beerListCollectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        
+        // indexPath starts in zero, so adding one just for convenience
+        let nextItemToBeDisplayed = indexPath.row + 1
+        
+        let endOfCollectionAvailable = beerListDataSource.beerListSnapshot.numberOfItems
+        
+        if nextItemToBeDisplayed == endOfCollectionAvailable { presenter.getBeers() }
     }
 }
