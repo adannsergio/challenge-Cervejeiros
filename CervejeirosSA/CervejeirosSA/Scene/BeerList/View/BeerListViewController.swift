@@ -24,7 +24,14 @@ class BeerListViewController: UIViewController {
         presenter.delegate = self
         containerView.beerListCollectionView.delegate = self
         
+        additionalSetup()
         presenter.getBeers()
+    }
+    
+    func additionalSetup() {
+        // TODO: - Criar um sistema de strings globais
+        self.navigationItem.title = "Beer List"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     init() {
@@ -42,8 +49,10 @@ class BeerListViewController: UIViewController {
 }
 
 extension BeerListViewController: BeerListPresenterDelegate {
-    func pushDetails(of beer: BeerDetailViewModel) {
-        // TODO: - Apresentar a tela de detalhes da cerveja selecionada.
+    func callBeerDetail(injeting beerId: Int) {
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(BeerDetailViewController(beerId: beerId), animated: true)
+        }
     }
     
     func newList(of beers: [BeerListViewModel]) {
@@ -57,6 +66,10 @@ extension BeerListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         self.containerView.beerListCollectionView.deselectItem(at: indexPath, animated: true)
+        
+        let beerSelected = beerListDataSource.beerListSnapshot.itemIdentifiers(inSection: .main)[indexPath.row]
+        
+        self.presenter.didSelect(beerSelected)
     }
     
     func collectionView(_ collectionView: UICollectionView,

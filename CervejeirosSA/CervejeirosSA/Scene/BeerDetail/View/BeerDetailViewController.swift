@@ -8,9 +8,12 @@
 import UIKit
 
 class BeerDetailViewController: UIViewController {
+    private let presenter = BeerDetailPresenter()
     
-    init() {
+    init(beerId: Int) {
         super.init(nibName: nil, bundle: nil)
+        presenter.delegate = self
+        presenter.getBeerDetail(using: beerId)
     }
     
     required init?(coder: NSCoder) {
@@ -20,5 +23,11 @@ class BeerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .orange
+    }
+}
+
+extension BeerDetailViewController: BeerDetailPresenterDelegate {
+    func loadDetails(of beer: BeerDetailViewModel) {
+        print(beer)
     }
 }

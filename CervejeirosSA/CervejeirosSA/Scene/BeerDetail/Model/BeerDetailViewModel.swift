@@ -30,4 +30,18 @@ struct BeerDetailViewModel {
     }
     
     func loadImage(from URL: URL) {}
+    
+    static func cast(from beer: Beer) -> BeerDetailViewModel {
+        return BeerDetailViewModel(id: beer.id!,
+                                   name: beer.name!,
+                                   tagline: beer.tagline!,
+                                   volume: BeerVolume(value: beer.volume!.value! , unit: beer.volume!.unit!),
+                                   imageURL: beer.image_url!,
+                                   abv: beer.abv!,
+                                   ibu: beer.ibu!,
+                                   brewerTips: BrewerTip(tip: beer.brewers_tips!, author: beer.contributed_by!),
+                                   foodPairing: beer.food_pairing!,
+                                   description: beer.description!)
+    }
 }
+

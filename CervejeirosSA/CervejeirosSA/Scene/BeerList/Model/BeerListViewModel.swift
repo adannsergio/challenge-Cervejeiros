@@ -8,7 +8,7 @@
 import Foundation
 
 struct BeerListViewModel: Hashable {
-    var id: Int
+    var id: Double
     var name: String
     var tagline: String
     
@@ -27,7 +27,7 @@ struct BeerListViewModel: Hashable {
         var beerListData = [BeerListViewModel]()
         
         for beer in beers {
-            beerListData.append(BeerListViewModel(id: beer.id ?? Int(),
+            beerListData.append(BeerListViewModel(id: beer.id ?? Double(),
                                              name: beer.name ?? "Empty Name",
                                              tagline: beer.tagline ?? String()))
         }

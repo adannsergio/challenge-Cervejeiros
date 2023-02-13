@@ -5,11 +5,11 @@
 //  Created by Adann Sergio Simoes on 05/02/23.
 //
 
-import Foundation
+import UIKit
 
 protocol BeerListPresenterDelegate: AnyObject {
     func newList(of beers: [BeerListViewModel])
-    func pushDetails(of beer: BeerDetailViewModel)
+    func callBeerDetail(injeting beerId: Int)
 }
 
 class BeerListPresenter {
@@ -17,6 +17,10 @@ class BeerListPresenter {
     weak var delegate: BeerListPresenterDelegate?
     
     private var currentPage: Int = 1
+    
+    func didSelect(_ beer: BeerListViewModel) {
+        delegate?.callBeerDetail(injeting: Int(beer.id))
+    }
     
     public func getBeers() {
         guard let url = URL(string: "https://api.punkapi.com/v2/beers?page=\(currentPage)&per_page=30") else { return }
@@ -39,6 +43,5 @@ class BeerListPresenter {
         }
         task.resume()
     }
-    
-    // TODO: - Trazer a lógica de iteração do usuário na tela para a camada de apresentação :)
 }
+
