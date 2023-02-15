@@ -9,6 +9,7 @@ import UIKit
 
 class BeerDetailViewController: UIViewController {
     private let presenter = BeerDetailPresenter()
+    private let beerDetailView = BeerDetailView()
     
     init(beerId: Int) {
         super.init(nibName: nil, bundle: nil)
@@ -22,7 +23,11 @@ class BeerDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .orange
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func loadView() {
+        self.view = beerDetailView
     }
 }
 

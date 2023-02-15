@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 final class BeerListCollectionViewDataSource {
-    var beerListDataSource: UICollectionViewDiffableDataSource<BeerListCollectionView.Section, BeerListViewModel>! = nil
+    var diffableDataSource: UICollectionViewDiffableDataSource<BeerListCollectionView.Section, BeerListViewModel>! = nil
     
-    lazy var beerListSnapshot: NSDiffableDataSourceSnapshot<BeerListCollectionView.Section, BeerListViewModel> = {
+    lazy var snapshot: NSDiffableDataSourceSnapshot<BeerListCollectionView.Section, BeerListViewModel> = {
         var diffableDataSource = NSDiffableDataSourceSnapshot<BeerListCollectionView.Section, BeerListViewModel>()
         diffableDataSource.appendSections([.main])
         return diffableDataSource
@@ -27,17 +27,17 @@ final class BeerListCollectionViewDataSource {
     }
     
     required init(for collectionView: UICollectionView) {
-        beerListDataSource = UICollectionViewDiffableDataSource<BeerListCollectionView.Section, BeerListViewModel>(collectionView: collectionView) {
+        diffableDataSource = UICollectionViewDiffableDataSource<BeerListCollectionView.Section, BeerListViewModel>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: BeerListViewModel) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: self.beerCellConfigured, for: indexPath, item: identifier)
         }
         
         // initial empty data
-        beerListDataSource.apply(beerListSnapshot, animatingDifferences: false)
+        diffableDataSource.apply(snapshot, animatingDifferences: false)
     }
     
     func appendList(of beers: [BeerListViewModel]) {
-        beerListSnapshot.appendItems(beers)
-        beerListDataSource.apply(beerListSnapshot, animatingDifferences: true)
+        snapshot.appendItems(beers)
+        diffableDataSource.apply(snapshot, animatingDifferences: true)
     }
 }

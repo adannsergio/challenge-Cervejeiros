@@ -51,7 +51,8 @@ class BeerListViewController: UIViewController {
 extension BeerListViewController: BeerListPresenterDelegate {
     func callBeerDetail(injeting beerId: Int) {
         DispatchQueue.main.async {
-            self.navigationController?.pushViewController(BeerDetailViewController(beerId: beerId), animated: true)
+            let vc = BeerDetailViewController(beerId: beerId)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -67,7 +68,7 @@ extension BeerListViewController: UICollectionViewDelegate {
                         didSelectItemAt indexPath: IndexPath) {
         self.containerView.beerListCollectionView.deselectItem(at: indexPath, animated: true)
         
-        let beerSelected = beerListDataSource.beerListSnapshot.itemIdentifiers(inSection: .main)[indexPath.row]
+        let beerSelected = beerListDataSource.snapshot.itemIdentifiers(inSection: .main)[indexPath.row]
         
         self.presenter.didSelect(beerSelected)
     }
@@ -76,11 +77,10 @@ extension BeerListViewController: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         
-        // indexPath starts in zero, so adding one just for convenience
-        let nextItemToBeDisplayed = indexPath.row + 1
+        let nextItemToBeDisplayed = indexPath.row
+        let endOfCollectionAvailable = beerListDataSource.snapshot.numberOfItems
         
-        let endOfCollectionAvailable = beerListDataSource.beerListSnapshot.numberOfItems
-        
-        if nextItemToBeDisplayed == endOfCollectionAvailable { presenter.getBeers() }
+        // Removing one just to match indexPath and numberOfItems begins
+        if nextItemToBeDisplayed == endOfCollectionAvailable - 1 { presenter.getBeers() }
     }
 }

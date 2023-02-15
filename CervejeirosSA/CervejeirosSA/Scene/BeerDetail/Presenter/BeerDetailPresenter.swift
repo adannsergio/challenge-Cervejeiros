@@ -36,4 +36,7 @@ class BeerDetailPresenter {
         task.resume()
     }
     
+    deinit {
+        delegate = nil
+    }
 }
