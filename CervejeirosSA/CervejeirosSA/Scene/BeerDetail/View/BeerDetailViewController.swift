@@ -33,6 +33,8 @@ class BeerDetailViewController: UIViewController {
 
 extension BeerDetailViewController: BeerDetailPresenterDelegate {
     func loadDetails(of beer: BeerDetailViewModel) {
-        print(beer)
+        DispatchQueue.main.async {
+            self.beerDetailView.load(viewModel: beer)
+        }
     }
 }

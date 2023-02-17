@@ -25,7 +25,7 @@ final class BeerDetailView: UIView {
         let view = UIStackView(frame: .zero)
         view.axis = .vertical
         view.alignment = .fill
-        view.distribution = .fillProportionally
+        view.distribution = .fill
         view.spacing = CGFloat(20)
         view.preservesSuperviewLayoutMargins = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,55 +48,20 @@ final class BeerDetailView: UIView {
         view.font = UIFont.systemFont(ofSize: 18)
         view.textAlignment = .center
         view.text = "Tagline and Volume properties"
-        view.backgroundColor = .systemGray5
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var image: UIImageView = {
-        let view = UIImageView(frame: .zero)
-        view.backgroundColor = .green
-        view.contentMode = .scaleAspectFit
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var abvAndIbuStack: UIStackView = {
-        let view = UIStackView(frame: .zero)
-        view.axis = .horizontal
-        view.alignment = .fill
-        view.distribution = .fillEqually
-        view.spacing = CGFloat(20)
-        view.backgroundColor = .systemGray5
-        view.preservesSuperviewLayoutMargins = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var abv: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.systemFont(ofSize: 16)
-        view.textAlignment = .right
-        view.text = "ABV property"
-        view.sizeToFit()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var ibu: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.systemFont(ofSize: 16)
-        view.textAlignment = .left
-        view.text = "IBU property"
-        view.sizeToFit()
+    private var twoColumn: TwoColumn = {
+        let view = TwoColumn(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var footerTitle: UILabel = {
         let view = UILabel(frame: .zero)
-        view.font = UIFont.systemFont(ofSize: 16)
+        view.font = UIFont.boldSystemFont(ofSize: 16)
         view.textAlignment = .center
         view.text = "Footer title"
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -119,13 +84,11 @@ Pellentesque porttitor venenatis enim, at ullamcorper felis varius nec. Ut risus
 Donec varius nec leo eu sagittis. Nunc malesuada quam eu scelerisque consectetur.
 Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis eleifend lacus urna ac augue.
 """
-        view.backgroundColor = .systemGray5
         view.numberOfLines = 0
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -138,19 +101,32 @@ Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis 
     }
 }
 
+extension BeerDetailView {
+    func load(viewModel: BeerDetailViewModel) {
+        name.text = viewModel.name
+        taglineAndVolume.text = viewModel.taglineAndVolume
+        footerTitle.text = "Brewer Tips"
+        footerContent.text = viewModel.brewerTip
+        
+        twoColumn
+            .load(configuration:
+                    .init(firstItemText: viewModel.abv,
+                          secondItemText: viewModel.ibu,
+                          thirdItemText: viewModel.ph,
+                          fourthItemText: viewModel.malt,
+                          fifthItemText: viewModel.hops,
+                          imageURL: viewModel.imageURL))
+    }
+}
+
 extension BeerDetailView: ViewCodeProtocol {
     func setViewHierarchy() {
         addSubview(scrollView)
         scrollView.addSubview(container)
-
+        
         stackView.addArrangedSubview(name)
         stackView.addArrangedSubview(taglineAndVolume)
-        stackView.addArrangedSubview(image)
-        
-        abvAndIbuStack.addArrangedSubview(abv)
-        abvAndIbuStack.addArrangedSubview(ibu)
-        stackView.addArrangedSubview(abvAndIbuStack)
-        
+        stackView.addArrangedSubview(twoColumn)
         stackView.addArrangedSubview(footerTitle)
         stackView.addArrangedSubview(footerContent)
         
@@ -170,20 +146,19 @@ extension BeerDetailView: ViewCodeProtocol {
             container.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             container.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
-            image.heightAnchor.constraint(equalToConstant: 400),
-            
             stackView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             stackView.widthAnchor.constraint(equalTo: container.widthAnchor),
             stackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             stackView.topAnchor.constraint(equalTo: container.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             
-            abvAndIbuStack.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+            twoColumn.heightAnchor.constraint(equalToConstant: 350)
         ])
-        
     }
     
     func setAdditionalConfiguration() {
+        stackView.setCustomSpacing(50, after: twoColumn)
+        stackView.setCustomSpacing(50, after: taglineAndVolume)
         backgroundColor = .white
     }
     
