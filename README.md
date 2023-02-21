@@ -26,7 +26,7 @@ Em caso de dúvidas abra uma issue que assim que possível iremos responder e en
 
 **Requisitos funcionais:**
 - [x] O usuário deve conseguir visualizar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
-- [ ] O usuário deve conseguir selecionar uma cerveja, na Lista de Cervejas, e visualizar em uma tela própria os Detalhes da Cerveja selecionada: imagem, nome, descrição, ingredientes; *outros itens poderão ser adicionados*
+- [x] O usuário deve conseguir selecionar uma cerveja, na Lista de Cervejas, e visualizar em uma tela própria os Detalhes da Cerveja selecionada: imagem, nome, descrição, ingredientes; *outros itens poderão ser adicionados*
 - [ ] O usuário deve conseguir visualizar uma Lista de Cervejas Favoritas
 - [ ] O usuário deve conseguir adicionar uma cerveja na Lista de Cervejas Favoritas quando estiver visualizando os detalhes dessa cerveja
 - [x] O usuário deve conseguir deslizar a Lista de Cervejas para baixo, e assim visualizar mais cervejas disponíveis no catálogo online da Cervejeiros SA

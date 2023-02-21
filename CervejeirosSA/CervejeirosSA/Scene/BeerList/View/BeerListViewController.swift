@@ -9,7 +9,7 @@ import UIKit
 
 class BeerListViewController: UIViewController {
     
-    private let presenter = BeerListPresenter()
+    private let presenter: BeerListPresenter
     
     private let containerView = BeerListContainer()
     
@@ -34,7 +34,8 @@ class BeerListViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    init() {
+    init(presenter: BeerListPresenter = BeerListPresenter()) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     

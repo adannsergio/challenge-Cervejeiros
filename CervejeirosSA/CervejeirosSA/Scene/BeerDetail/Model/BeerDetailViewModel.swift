@@ -10,7 +10,7 @@ import UIKit
 struct BeerDetailViewModel {
     let name: String
     let taglineAndVolume: String
-    let imageURL: URL
+    let imageData: Data
     let abv: NSAttributedString
     let ibu: NSAttributedString
     let ph: NSAttributedString
@@ -32,7 +32,7 @@ struct BeerDetailViewModel {
     
     func loadImage(from URL: URL) {}
 
-    static func cast(from beer: Beer) -> BeerDetailViewModel {
+    static func cast(from beer: Beer, considering imageData: Data) -> BeerDetailViewModel {
         
         let name = beer.name ?? String()
         
@@ -69,7 +69,7 @@ struct BeerDetailViewModel {
         
         return BeerDetailViewModel(name: name,
                                    taglineAndVolume: tagLineAndVolume,
-                                   imageURL: imageURL ?? URL(string: "https://via.placeholder.com/300.png")!,
+                                   imageData: imageData,
                                    abv: abv,
                                    ibu: ibu,
                                    ph: ph,

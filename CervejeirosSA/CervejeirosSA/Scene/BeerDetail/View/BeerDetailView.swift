@@ -48,6 +48,7 @@ final class BeerDetailView: UIView {
         view.font = UIFont.systemFont(ofSize: 18)
         view.textAlignment = .center
         view.text = "Tagline and Volume properties"
+        view.numberOfLines = 0
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -115,7 +116,7 @@ extension BeerDetailView {
                           thirdItemText: viewModel.ph,
                           fourthItemText: viewModel.malt,
                           fifthItemText: viewModel.hops,
-                          imageURL: viewModel.imageURL))
+                          imageData: viewModel.imageData))
     }
 }
 

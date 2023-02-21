@@ -15,33 +15,33 @@ protocol BeerListPresenterDelegate: AnyObject {
 class BeerListPresenter {
     
     weak var delegate: BeerListPresenterDelegate?
+    let service: BeerListService
     
     private var currentPage: Int = 1
+    
+    init(service: BeerListService = BeerListService()) {
+        self.service = service
+    }
     
     func didSelect(_ beer: BeerListViewModel) {
         delegate?.callBeerDetail(injeting: Int(beer.id))
     }
     
-    public func getBeers() {
-        guard let url = URL(string: "https://api.punkapi.com/v2/beers?page=\(currentPage)&per_page=30") else { return }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            
+    func getBeers() {
+        service.fetchBeers(page: currentPage) { [weak self] result in
             guard let sSelf = self else { return }
             
-            guard let data = data, error == nil else {
-                return
-            }
-            
-            do {
-                let beers = try JSONDecoder().decode([Beer].self, from: data)
-                sSelf.currentPage += 1
-                sSelf.delegate?.newList(of: BeerListViewModel.cast(from: beers))
-            }
-            catch {
-                print(error)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let beers):
+                    let beersViewModel = BeerListViewModel.cast(from: beers)
+                    sSelf.delegate?.newList(of: beersViewModel)
+                    sSelf.currentPage += 1
+                case .failure(let error):
+                    NSLog("Error fetching beers: %@", error.localizedDescription)
+                }
             }
         }
-        task.resume()
     }
 }
 

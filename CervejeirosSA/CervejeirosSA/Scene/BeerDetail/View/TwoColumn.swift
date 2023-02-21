@@ -8,15 +8,16 @@
 import UIKit
 
 final class TwoColumn: UIView {
-    
-    lazy var container: UIView = {
+    // MARK: - Properties
+
+    private lazy var container: UIView = {
         let view = UIView(frame: .zero)
         view.preservesSuperviewLayoutMargins = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var leftColumnImage: UIImageView = {
+    private lazy var leftColumnImage: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.image = UIImage()
         view.contentMode = .scaleAspectFit
@@ -25,14 +26,14 @@ final class TwoColumn: UIView {
         return view
     }()
     
-    lazy var rightColumnContainer: UIView = {
+    private lazy var rightColumnContainer: UIView = {
         let view = UIView(frame: .zero)
         view.preservesSuperviewLayoutMargins = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var firstItemText: UILabel = {
+    private lazy var firstItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
@@ -43,7 +44,7 @@ final class TwoColumn: UIView {
         return view
     }()
     
-    lazy var secondItemText: UILabel = {
+    private lazy var secondItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
@@ -54,7 +55,7 @@ final class TwoColumn: UIView {
         return view
     }()
     
-    lazy var thirdItemText: UILabel = {
+    private lazy var thirdItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
@@ -66,7 +67,7 @@ final class TwoColumn: UIView {
         return view
     }()
     
-    lazy var fourthItemText: UILabel = {
+    private lazy var fourthItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
@@ -78,7 +79,7 @@ final class TwoColumn: UIView {
         return view
     }()
     
-    lazy var fifthItemText: UILabel = {
+    private lazy var fifthItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
@@ -90,6 +91,8 @@ final class TwoColumn: UIView {
         return view
     }()
     
+    // MARK: - Initializers
+    
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         viewCodeSetup()
@@ -99,7 +102,7 @@ final class TwoColumn: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
+// MARK: - Public Content
 extension TwoColumn {
     struct Configuration {
         let firstItemText: NSAttributedString
@@ -107,11 +110,11 @@ extension TwoColumn {
         let thirdItemText: NSAttributedString
         let fourthItemText: NSAttributedString
         let fifthItemText: NSAttributedString
-        let imageURL: URL
+        let imageData: Data
     }
     
     public func load(configuration: Configuration) {
-        leftColumnImage.download(from: configuration.imageURL)
+        leftColumnImage.image = UIImage(data: configuration.imageData)
         firstItemText.attributedText = configuration.firstItemText
         secondItemText.attributedText = configuration.secondItemText
         thirdItemText.attributedText = configuration.thirdItemText
@@ -120,6 +123,7 @@ extension TwoColumn {
     }
 }
 
+// MARK: - View Code Configuration
 extension TwoColumn: ViewCodeProtocol {
     func setViewHierarchy() {
         container.addSubview(leftColumnImage)
@@ -145,7 +149,7 @@ extension TwoColumn: ViewCodeProtocol {
             leftColumnImage.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             leftColumnImage.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 4/9),
             
-            rightColumnContainer.leadingAnchor.constraint(equalTo: leftColumnImage.trailingAnchor),
+            rightColumnContainer.leadingAnchor.constraint(equalTo: leftColumnImage.trailingAnchor, constant: 5),
             rightColumnContainer.topAnchor.constraint(equalTo: container.topAnchor),
             rightColumnContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             rightColumnContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor),
