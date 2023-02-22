@@ -17,7 +17,7 @@ final class TwoColumn: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var leftColumnImage: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.image = UIImage(named: "beerPlaceholder")
@@ -26,14 +26,14 @@ final class TwoColumn: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var rightColumnContainer: UIView = {
         let view = UIView(frame: .zero)
         view.preservesSuperviewLayoutMargins = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var firstItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
@@ -43,7 +43,7 @@ final class TwoColumn: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var secondItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
@@ -54,7 +54,7 @@ final class TwoColumn: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var thirdItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
@@ -65,7 +65,7 @@ final class TwoColumn: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var fourthItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
@@ -77,7 +77,7 @@ final class TwoColumn: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private lazy var fifthItemText: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
@@ -88,18 +88,18 @@ final class TwoColumn: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     // MARK: - Initializers
-    
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         viewCodeSetup()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 // MARK: - Public Content
 extension TwoColumn {
     struct Configuration {
@@ -110,7 +110,7 @@ extension TwoColumn {
         let fifthItemText: NSAttributedString
         let imageData: Data
     }
-    
+
     public func load(configuration: Configuration) {
         leftColumnImage.image = UIImage(data: configuration.imageData)
         firstItemText.attributedText = configuration.firstItemText
@@ -131,27 +131,27 @@ extension TwoColumn: ViewCodeProtocol {
         container.addSubview(thirdItemText)
         container.addSubview(fourthItemText)
         container.addSubview(fifthItemText)
-        
+
         addSubview(container)
     }
-    
+
     func setConstraints() {
         NSLayoutConstraint.activate([
             container.leadingAnchor.constraint(equalTo: leadingAnchor),
             container.topAnchor.constraint(equalTo: topAnchor),
             container.trailingAnchor.constraint(equalTo: trailingAnchor),
             container.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+
             leftColumnImage.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             leftColumnImage.topAnchor.constraint(equalTo: container.topAnchor, constant: 5),
             leftColumnImage.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             leftColumnImage.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 4/9),
-            
+
             rightColumnContainer.leadingAnchor.constraint(equalTo: leftColumnImage.trailingAnchor, constant: 5),
             rightColumnContainer.topAnchor.constraint(equalTo: container.topAnchor),
             rightColumnContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             rightColumnContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            
+
             firstItemText.leadingAnchor.constraint(equalTo: rightColumnContainer.leadingAnchor),
             firstItemText.topAnchor.constraint(equalTo: rightColumnContainer.topAnchor, constant: 25),
             firstItemText.trailingAnchor.constraint(equalTo: rightColumnContainer.trailingAnchor),
@@ -174,6 +174,6 @@ extension TwoColumn: ViewCodeProtocol {
             fifthItemText.bottomAnchor.constraint(lessThanOrEqualTo: rightColumnContainer.bottomAnchor)
         ])
     }
-    
+
     func setAdditionalConfiguration() {}
 }

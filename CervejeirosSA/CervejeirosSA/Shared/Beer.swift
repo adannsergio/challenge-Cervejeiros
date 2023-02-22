@@ -21,21 +21,21 @@ struct Beer: Codable {
     let food_pairing: [String?]?
     let description: String?
     let ingredients: Ingredients?
-    
+
     struct Volume: Codable {
         let value: Double?
         let unit: String?
     }
-    
+
     struct Ingredients: Codable {
         let malt: [Malt?]?
         let hops: [Hops?]?
     }
-    
+
     struct Malt: Codable {
         let name: String?
     }
-    
+
     struct Hops: Codable {
         let name: String?
     }

@@ -10,7 +10,7 @@ import UIKit
 final class BeerDetailView: UIView {
     // MARK: - Properties
 
-    enum BeerDetailViewState {
+    private enum BeerDetailViewState {
         case loading
         case ready
     }
@@ -26,19 +26,19 @@ final class BeerDetailView: UIView {
         }
     }
 
-    lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    lazy var container: UIView = {
+    private lazy var container: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    lazy var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let view = UIStackView(frame: .zero)
         view.axis = .vertical
         view.alignment = .fill
@@ -49,7 +49,7 @@ final class BeerDetailView: UIView {
         return view
     }()
 
-    lazy var name: UILabel = {
+    private lazy var name: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.boldSystemFont(ofSize: 20)
         view.textAlignment = .left
@@ -60,7 +60,7 @@ final class BeerDetailView: UIView {
         return view
     }()
 
-    lazy var taglineAndVolume: UILabel = {
+    private lazy var taglineAndVolume: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 18)
         view.textAlignment = .center
@@ -77,7 +77,7 @@ final class BeerDetailView: UIView {
         return view
     }()
 
-    lazy var descriptionTitle: UILabel = {
+    private lazy var descriptionTitle: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.boldSystemFont(ofSize: 16)
         view.textAlignment = .center
@@ -87,7 +87,7 @@ final class BeerDetailView: UIView {
         return view
     }()
 
-    lazy var descriptionContent: UILabel = {
+    private lazy var descriptionContent: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
@@ -104,7 +104,7 @@ Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis 
         return view
     }()
 
-    lazy var foodPairingTitle: UILabel = {
+    private lazy var foodPairingTitle: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.boldSystemFont(ofSize: 16)
         view.textAlignment = .center
@@ -114,7 +114,7 @@ Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis 
         return view
     }()
 
-    lazy var foodPairingContent: UILabel = {
+    private lazy var foodPairingContent: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
@@ -131,7 +131,7 @@ Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis 
         return view
     }()
 
-    lazy var brewerTipsTitle: UILabel = {
+    private lazy var brewerTipsTitle: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.boldSystemFont(ofSize: 16)
         view.textAlignment = .center
@@ -141,7 +141,7 @@ Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis 
         return view
     }()
 
-    lazy var brewerTipsContent: UILabel = {
+    private lazy var brewerTipsContent: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.italicSystemFont(ofSize: 16)
         view.textAlignment = .left

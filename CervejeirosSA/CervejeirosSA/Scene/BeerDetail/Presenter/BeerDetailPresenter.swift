@@ -27,7 +27,7 @@ class BeerDetailPresenter {
         service.fetchDetail(of: id) { [weak self] result in
             guard let sSelf = self else { return }
 
-            switch result  {
+            switch result {
             case .success(let beer):
                 guard let firstSafeBeer = beer.first else { return }
                 guard let safeImageUrl = firstSafeBeer.image_url else { return }
