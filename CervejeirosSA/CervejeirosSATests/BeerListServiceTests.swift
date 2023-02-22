@@ -9,22 +9,22 @@ import XCTest
 @testable import CervejeirosSA
 
 class BeerListServiceTests: XCTestCase {
-    
+
     var service: BeerListService!
     var mockAPIClient: MockAPIClient!
-    
+
     override func setUp() {
         super.setUp()
         mockAPIClient = MockAPIClient()
         service = BeerListService(apiClient: mockAPIClient)
     }
-    
+
     override func tearDown() {
         mockAPIClient = nil
         service = nil
         super.tearDown()
     }
-    
+
     func testFetchBeersSuccess() {
         // Given
         let beersMock = [Beer(id: 1,
@@ -47,7 +47,7 @@ class BeerListServiceTests: XCTestCase {
 
         let jsonData = beerJsonSample.data(using: .utf8)
         mockAPIClient.data = jsonData
-        
+
         // When
         service.fetchBeers(page: 1) { result in
             // Then
@@ -59,15 +59,15 @@ class BeerListServiceTests: XCTestCase {
             }
         }
     }
-    
+
     func testFetchBeersFailure() {
         // Given
         let expectedError = NSError(domain: "test", code: 123, userInfo: nil)
         mockAPIClient.error = expectedError
-        
+
         var fetchedBeers: [Beer]?
         var fetchError: Error?
-        
+
         // When
         service.fetchBeers(page: 1) { result in
             switch result {
@@ -76,7 +76,7 @@ class BeerListServiceTests: XCTestCase {
             case .failure(let error):
                 fetchError = error
             }
-            
+
             // Then
             XCTAssertNil(fetchedBeers)
             XCTAssertEqual(fetchError as NSError?, expectedError)
