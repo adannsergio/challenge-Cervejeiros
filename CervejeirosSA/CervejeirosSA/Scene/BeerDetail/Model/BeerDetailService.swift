@@ -8,14 +8,15 @@
 import Foundation
 
 protocol BeerDetailProtocol {
+    var apiClient: APIClientProtocol { get }
     func fetchDetail(of beerId: Int, completion: @escaping (Result<[Beer], Error>) -> Void)
     func downloadImage(from imageUrl: URL, completion: ((Data?) -> Void)?)
 }
 
 class BeerDetailService: BeerDetailProtocol {
-    let apiClient: APIClient
+    var apiClient: APIClientProtocol
 
-    init(apiClient: APIClient = APIClient()) {
+    init(apiClient: APIClientProtocol = APIClient()) {
         self.apiClient = apiClient
     }
 
