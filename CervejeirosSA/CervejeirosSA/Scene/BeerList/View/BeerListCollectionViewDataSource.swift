@@ -16,7 +16,8 @@ final class BeerListCollectionViewDataSource {
         return diffableDataSource
     }()
 
-    private let beerCellConfigured = UICollectionView.CellRegistration<UICollectionViewListCell, BeerListViewModel> { (cell, indexPath, item) in
+    private let beerCellConfigured = UICollectionView.CellRegistration<UICollectionViewListCell,
+                                                                        BeerListViewModel> { (cell, indexPath, item) in
         var cellConfiguration = cell.defaultContentConfiguration()
         cellConfiguration.text = "\(item.name)"
         cellConfiguration.secondaryText = "\(item.tagline)"

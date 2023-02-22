@@ -23,7 +23,7 @@ extension APIClient {
             self.httpMethod = httpMethod
             self.queryItens = queryItens
         }
-        
+
         var urlRequest: URLRequest {
             var urlComponents = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: true)
 
@@ -34,7 +34,7 @@ extension APIClient {
             }
 
             let request = URLRequest(url: (urlComponents?.url)!)
-            
+
             return request
         }
     }

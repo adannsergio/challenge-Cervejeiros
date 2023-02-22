@@ -8,7 +8,6 @@
 import Foundation
 
 public extension Array where Element: Equatable {
-    
     @discardableResult
     mutating func removeDuplicates() -> [Element] {
         self = reduce(into: [Element]()) {
@@ -18,5 +17,4 @@ public extension Array where Element: Equatable {
         }
         return self
     }
-    
 }

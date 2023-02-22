@@ -13,7 +13,6 @@ protocol BeerListPresenterDelegate: AnyObject {
 }
 
 class BeerListPresenter {
-    
     weak var delegate: BeerListPresenterDelegate?
     let service: BeerListService
 
