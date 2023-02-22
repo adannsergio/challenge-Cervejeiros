@@ -26,6 +26,7 @@
 		184275B5299DE68E004961F6 /* TwoColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275B4299DE68E004961F6 /* TwoColumn.swift */; };
 		184275B7299EE437004961F6 /* String+attributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275B6299EE437004961F6 /* String+attributedText.swift */; };
 		184275B9299EFE8D004961F6 /* Array+removeDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275B8299EFE8D004961F6 /* Array+removeDuplicates.swift */; };
+		18A9B9AA29A6B87200B9B09B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B9A929A6B87200B9B09B /* Constants.swift */; };
 		18B5ED1429A3D841008D2579 /* BeerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1329A3D841008D2579 /* BeerListService.swift */; };
 		18B5ED1629A3E3AE008D2579 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1529A3E3AE008D2579 /* APIClient.swift */; };
 		18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */; };
@@ -67,6 +68,7 @@
 		184275B4299DE68E004961F6 /* TwoColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoColumn.swift; sourceTree = "<group>"; };
 		184275B6299EE437004961F6 /* String+attributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+attributedText.swift"; sourceTree = "<group>"; };
 		184275B8299EFE8D004961F6 /* Array+removeDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+removeDuplicates.swift"; sourceTree = "<group>"; };
+		18A9B9A929A6B87200B9B09B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18B5ED1329A3D841008D2579 /* BeerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListService.swift; sourceTree = "<group>"; };
 		18B5ED1529A3E3AE008D2579 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+ClientError.swift"; sourceTree = "<group>"; };
@@ -257,11 +259,20 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		18A9B9A829A6B85D00B9B09B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				18A9B9A929A6B87200B9B09B /* Constants.swift */,
+				18B5ED3729A6A169008D2579 /* MockAPIClient.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		18B5ED2F29A690D0008D2579 /* CervejeirosSATests */ = {
 			isa = PBXGroup;
 			children = (
+				18A9B9A829A6B85D00B9B09B /* Helper */,
 				18B5ED3029A690D0008D2579 /* CervejeirosSATests.swift */,
-				18B5ED3729A6A169008D2579 /* MockAPIClient.swift */,
 			);
 			path = CervejeirosSATests;
 			sourceTree = "<group>";
@@ -397,6 +408,7 @@
 			files = (
 				18B5ED3129A690D0008D2579 /* CervejeirosSATests.swift in Sources */,
 				18B5ED3829A6A169008D2579 /* MockAPIClient.swift in Sources */,
+				18A9B9AA29A6B87200B9B09B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

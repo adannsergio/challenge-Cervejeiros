@@ -45,14 +45,14 @@ class BeerListServiceTests: XCTestCase {
                                                             hops: [Beer.Hops(name: "hop a"),
                                                                    Beer.Hops(name: "hop b")]))]
 
-        mockAPIClient.data = try? JSONEncoder().encode(beersMock)
+        let jsonData = beerJsonSample.data(using: .utf8)
+        mockAPIClient.data = jsonData
         
         // When
         service.fetchBeers(page: 1) { result in
             // Then
             switch result {
             case .success(let beers):
-                XCTAssertFalse(beers.isEmpty)
                 XCTAssertEqual(beers[0], beersMock[0])
             case .failure(let error):
                 XCTFail("Erro ao buscar cervejas: \(error.localizedDescription)")
