@@ -32,7 +32,7 @@
 		18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */; };
 		18B5ED1A29A3F3E2008D2579 /* APIClient+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1929A3F3E2008D2579 /* APIClient+Endpoint.swift */; };
 		18B5ED1C29A42226008D2579 /* BeerDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1B29A42226008D2579 /* BeerDetailService.swift */; };
-		18B5ED3129A690D0008D2579 /* CervejeirosSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED3029A690D0008D2579 /* CervejeirosSATests.swift */; };
+		18B5ED3129A690D0008D2579 /* BeerListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED3029A690D0008D2579 /* BeerListServiceTests.swift */; };
 		18B5ED3829A6A169008D2579 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED3729A6A169008D2579 /* MockAPIClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +75,7 @@
 		18B5ED1929A3F3E2008D2579 /* APIClient+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Endpoint.swift"; sourceTree = "<group>"; };
 		18B5ED1B29A42226008D2579 /* BeerDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailService.swift; sourceTree = "<group>"; };
 		18B5ED2E29A690CF008D2579 /* CervejeirosSATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CervejeirosSATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18B5ED3029A690D0008D2579 /* CervejeirosSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CervejeirosSATests.swift; sourceTree = "<group>"; };
+		18B5ED3029A690D0008D2579 /* BeerListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListServiceTests.swift; sourceTree = "<group>"; };
 		18B5ED3729A6A169008D2579 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				18A9B9A829A6B85D00B9B09B /* Helper */,
-				18B5ED3029A690D0008D2579 /* CervejeirosSATests.swift */,
+				18B5ED3029A690D0008D2579 /* BeerListServiceTests.swift */,
 			);
 			path = CervejeirosSATests;
 			sourceTree = "<group>";
@@ -406,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B5ED3129A690D0008D2579 /* CervejeirosSATests.swift in Sources */,
+				18B5ED3129A690D0008D2579 /* BeerListServiceTests.swift in Sources */,
 				18B5ED3829A6A169008D2579 /* MockAPIClient.swift in Sources */,
 				18A9B9AA29A6B87200B9B09B /* Constants.swift in Sources */,
 			);
