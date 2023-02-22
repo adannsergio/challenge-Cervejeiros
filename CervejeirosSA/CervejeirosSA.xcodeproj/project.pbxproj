@@ -31,7 +31,19 @@
 		18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */; };
 		18B5ED1A29A3F3E2008D2579 /* APIClient+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1929A3F3E2008D2579 /* APIClient+Endpoint.swift */; };
 		18B5ED1C29A42226008D2579 /* BeerDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1B29A42226008D2579 /* BeerDetailService.swift */; };
+		18B5ED3129A690D0008D2579 /* CervejeirosSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED3029A690D0008D2579 /* CervejeirosSATests.swift */; };
+		18B5ED3829A6A169008D2579 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED3729A6A169008D2579 /* MockAPIClient.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18B5ED3229A690D0008D2579 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1822E7FC298DFDDC00757FF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1822E803298DFDDC00757FF0;
+			remoteInfo = CervejeirosSA;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1822E804298DFDDC00757FF0 /* CervejeirosSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CervejeirosSA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,10 +72,20 @@
 		18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+ClientError.swift"; sourceTree = "<group>"; };
 		18B5ED1929A3F3E2008D2579 /* APIClient+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Endpoint.swift"; sourceTree = "<group>"; };
 		18B5ED1B29A42226008D2579 /* BeerDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailService.swift; sourceTree = "<group>"; };
+		18B5ED2E29A690CF008D2579 /* CervejeirosSATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CervejeirosSATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18B5ED3029A690D0008D2579 /* CervejeirosSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CervejeirosSATests.swift; sourceTree = "<group>"; };
+		18B5ED3729A6A169008D2579 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1822E801298DFDDC00757FF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18B5ED2B29A690CF008D2579 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				1822E806298DFDDC00757FF0 /* CervejeirosSA */,
+				18B5ED2F29A690D0008D2579 /* CervejeirosSATests */,
 				1822E805298DFDDC00757FF0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				1822E804298DFDDC00757FF0 /* CervejeirosSA.app */,
+				18B5ED2E29A690CF008D2579 /* CervejeirosSATests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,6 +257,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		18B5ED2F29A690D0008D2579 /* CervejeirosSATests */ = {
+			isa = PBXGroup;
+			children = (
+				18B5ED3029A690D0008D2579 /* CervejeirosSATests.swift */,
+				18B5ED3729A6A169008D2579 /* MockAPIClient.swift */,
+			);
+			path = CervejeirosSATests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +286,24 @@
 			productReference = 1822E804298DFDDC00757FF0 /* CervejeirosSA.app */;
 			productType = "com.apple.product-type.application";
 		};
+		18B5ED2D29A690CF008D2579 /* CervejeirosSATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18B5ED3629A690D0008D2579 /* Build configuration list for PBXNativeTarget "CervejeirosSATests" */;
+			buildPhases = (
+				18B5ED2A29A690CF008D2579 /* Sources */,
+				18B5ED2B29A690CF008D2579 /* Frameworks */,
+				18B5ED2C29A690CF008D2579 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18B5ED3329A690D0008D2579 /* PBXTargetDependency */,
+			);
+			name = CervejeirosSATests;
+			productName = CervejeirosSATests;
+			productReference = 18B5ED2E29A690CF008D2579 /* CervejeirosSATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -265,6 +316,10 @@
 				TargetAttributes = {
 					1822E803298DFDDC00757FF0 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					18B5ED2D29A690CF008D2579 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 1822E803298DFDDC00757FF0;
 					};
 				};
 			};
@@ -282,6 +337,7 @@
 			projectRoot = "";
 			targets = (
 				1822E803298DFDDC00757FF0 /* CervejeirosSA */,
+				18B5ED2D29A690CF008D2579 /* CervejeirosSATests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,6 +349,13 @@
 			files = (
 				1822E814298DFDDD00757FF0 /* LaunchScreen.storyboard in Resources */,
 				1822E811298DFDDD00757FF0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18B5ED2C29A690CF008D2579 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +391,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18B5ED2A29A690CF008D2579 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18B5ED3129A690D0008D2579 /* CervejeirosSATests.swift in Sources */,
+				18B5ED3829A6A169008D2579 /* MockAPIClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18B5ED3329A690D0008D2579 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1822E803298DFDDC00757FF0 /* CervejeirosSA */;
+			targetProxy = 18B5ED3229A690D0008D2579 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1822E812298DFDDD00757FF0 /* LaunchScreen.storyboard */ = {
@@ -522,6 +602,42 @@
 			};
 			name = Release;
 		};
+		18B5ED3429A690D0008D2579 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P89J5888T8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.adannsergio.CervejeirosSATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CervejeirosSA.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CervejeirosSA";
+			};
+			name = Debug;
+		};
+		18B5ED3529A690D0008D2579 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P89J5888T8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.adannsergio.CervejeirosSATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CervejeirosSA.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CervejeirosSA";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -539,6 +655,15 @@
 			buildConfigurations = (
 				1822E819298DFDDD00757FF0 /* Debug */,
 				1822E81A298DFDDD00757FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18B5ED3629A690D0008D2579 /* Build configuration list for PBXNativeTarget "CervejeirosSATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18B5ED3429A690D0008D2579 /* Debug */,
+				18B5ED3529A690D0008D2579 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

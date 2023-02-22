@@ -15,7 +15,7 @@ protocol BeerListServiceProtocol {
 class BeerListService: BeerListServiceProtocol {
     var apiClient: APIClientProtocol
 
-    init(apiClient: APIClient = APIClient()) { self.apiClient = apiClient }
+    init(apiClient: APIClientProtocol = APIClient()) { self.apiClient = apiClient }
 
     func fetchBeers(page: Int, completion: @escaping (Result<[Beer], Error>) -> Void) {
         let endpoint: APIClient.Endpoint = .init(path: "beers",
