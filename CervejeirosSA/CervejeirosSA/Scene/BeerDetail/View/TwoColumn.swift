@@ -19,7 +19,7 @@ final class TwoColumn: UIView {
     
     private lazy var leftColumnImage: UIImageView = {
         let view = UIImageView(frame: .zero)
-        view.image = UIImage()
+        view.image = UIImage(named: "beerPlaceholder")
         view.contentMode = .scaleAspectFit
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +38,6 @@ final class TwoColumn: UIView {
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
         view.text = "ABV property"
-        view.backgroundColor = .systemGray5
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -60,7 +59,6 @@ final class TwoColumn: UIView {
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
         view.text = "PH property"
-        view.backgroundColor = .systemGray5
         view.sizeToFit()
         view.baselineAdjustment = .alignCenters
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +82,6 @@ final class TwoColumn: UIView {
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
         view.text = "Hops: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        view.backgroundColor = .systemGray5
         view.numberOfLines = 0
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false

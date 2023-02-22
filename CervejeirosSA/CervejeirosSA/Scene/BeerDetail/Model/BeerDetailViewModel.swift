@@ -15,7 +15,7 @@ struct BeerDetailViewModel {
     let ibu: NSAttributedString
     let ph: NSAttributedString
     let brewerTip: String?
-    let foodPairing: [String]
+    let foodPairing: String
     let description: String
     let malt: NSAttributedString
     let hops: NSAttributedString
@@ -40,8 +40,6 @@ struct BeerDetailViewModel {
         let volume = Volume(value: beer.volume?.value ?? Double(), unit: beer.volume?.unit ?? String())
         let tagLineAndVolume = "\(tagline) (\(volume.value) \(volume.unit))"
         
-        let imageURL = beer.image_url
-        
         let safeAbv = String(beer.abv ?? Double())
         let abv = "ABV: \(safeAbv)".attributedText(text: "ABV:")
         
@@ -54,7 +52,9 @@ struct BeerDetailViewModel {
         let brewerTip = BrewerTip(tip: beer.brewers_tips ?? String(), author: beer.contributed_by ?? String())
         let brewerTipString = "\(brewerTip.tip) - \(brewerTip.author)"
         
-        let foodPairing = beer.food_pairing?.compactMap({$0}) ?? [String()]
+        let foodPairingArray = beer.food_pairing?.compactMap({$0}) ?? [String()]
+        let foodPairing = foodPairingArray.joined(separator: ", ")
+        
         let description = beer.description ?? String()
         
         var safeMeltsArray = beer.ingredients?.malt?.compactMap({$0?.name}) ?? [String()]

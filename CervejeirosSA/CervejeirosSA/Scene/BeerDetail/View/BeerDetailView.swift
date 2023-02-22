@@ -8,6 +8,23 @@
 import UIKit
 
 final class BeerDetailView: UIView {
+    // MARK: - Properties
+    
+    enum BeerDetailViewState {
+        case loading
+        case ready
+    }
+    
+    private var state: BeerDetailViewState {
+        didSet {
+            switch state {
+            case .ready:
+                scrollView.isHidden = false
+            case .loading:
+                scrollView.isHidden = true
+            }
+        }
+    }
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
@@ -60,26 +77,22 @@ final class BeerDetailView: UIView {
         return view
     }()
     
-    lazy var footerTitle: UILabel = {
+    lazy var descriptionTitle: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.boldSystemFont(ofSize: 16)
         view.textAlignment = .center
-        view.text = "Footer title"
+        view.text = "Description"
+        view.backgroundColor = .systemGray5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var footerContent: UILabel = {
+    lazy var descriptionContent: UILabel = {
         let view = UILabel(frame: .zero)
-        view.font = UIFont.italicSystemFont(ofSize: 16)
+        view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
         view.text =
 """
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Pellentesque porttitor venenatis enim, at ullamcorper felis varius nec. Ut risus ligula, commodo a suscipit eget, interdum id tortor.
-Donec varius nec leo eu sagittis. Nunc malesuada quam eu scelerisque consectetur.
-Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis eleifend lacus urna ac augue.
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Pellentesque porttitor venenatis enim, at ullamcorper felis varius nec. Ut risus ligula, commodo a suscipit eget, interdum id tortor.
 Donec varius nec leo eu sagittis. Nunc malesuada quam eu scelerisque consectetur.
@@ -91,7 +104,65 @@ Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis 
         return view
     }()
     
+    lazy var foodPairingTitle: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.boldSystemFont(ofSize: 16)
+        view.textAlignment = .center
+        view.text = "Food Pairing"
+        view.backgroundColor = .systemGray5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var foodPairingContent: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.systemFont(ofSize: 16)
+        view.textAlignment = .left
+        view.text =
+"""
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Pellentesque porttitor venenatis enim, at ullamcorper felis varius nec. Ut risus ligula, commodo a suscipit eget, interdum id tortor.
+Donec varius nec leo eu sagittis. Nunc malesuada quam eu scelerisque consectetur.
+Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis eleifend lacus urna ac augue.
+"""
+        view.numberOfLines = 0
+        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var brewerTipsTitle: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.boldSystemFont(ofSize: 16)
+        view.textAlignment = .center
+        view.text = "Brewer Tips"
+        view.backgroundColor = .systemGray5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var brewerTipsContent: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.italicSystemFont(ofSize: 16)
+        view.textAlignment = .left
+        view.text =
+"""
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Pellentesque porttitor venenatis enim, at ullamcorper felis varius nec. Ut risus ligula, commodo a suscipit eget, interdum id tortor.
+Donec varius nec leo eu sagittis. Nunc malesuada quam eu scelerisque consectetur.
+Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis eleifend lacus urna ac augue.
+"""
+        view.numberOfLines = 0
+        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // MARK: - Initializers
+    
     override init(frame: CGRect = .zero) {
+        self.state = .loading
+        
         super.init(frame: frame)
         
         viewCodeSetup()
@@ -102,12 +173,14 @@ Nullam imperdiet, erat at feugiat gravida, metus massa pellentesque dolor, quis 
     }
 }
 
+// MARK: - Public Content
 extension BeerDetailView {
     func load(viewModel: BeerDetailViewModel) {
         name.text = viewModel.name
         taglineAndVolume.text = viewModel.taglineAndVolume
-        footerTitle.text = "Brewer Tips"
-        footerContent.text = viewModel.brewerTip
+        descriptionContent.text = viewModel.description
+        foodPairingContent.text = viewModel.foodPairing
+        brewerTipsContent.text = viewModel.brewerTip
         
         twoColumn
             .load(configuration:
@@ -117,9 +190,12 @@ extension BeerDetailView {
                           fourthItemText: viewModel.malt,
                           fifthItemText: viewModel.hops,
                           imageData: viewModel.imageData))
+        
+        state = .ready
     }
 }
 
+// MARK: - View Code Configuration
 extension BeerDetailView: ViewCodeProtocol {
     func setViewHierarchy() {
         addSubview(scrollView)
@@ -128,8 +204,12 @@ extension BeerDetailView: ViewCodeProtocol {
         stackView.addArrangedSubview(name)
         stackView.addArrangedSubview(taglineAndVolume)
         stackView.addArrangedSubview(twoColumn)
-        stackView.addArrangedSubview(footerTitle)
-        stackView.addArrangedSubview(footerContent)
+        stackView.addArrangedSubview(descriptionTitle)
+        stackView.addArrangedSubview(descriptionContent)
+        stackView.addArrangedSubview(foodPairingTitle)
+        stackView.addArrangedSubview(foodPairingContent)
+        stackView.addArrangedSubview(brewerTipsTitle)
+        stackView.addArrangedSubview(brewerTipsContent)
         
         container.addSubview(stackView)
     }
@@ -158,9 +238,10 @@ extension BeerDetailView: ViewCodeProtocol {
     }
     
     func setAdditionalConfiguration() {
-        stackView.setCustomSpacing(50, after: twoColumn)
-        stackView.setCustomSpacing(50, after: taglineAndVolume)
+        stackView.setCustomSpacing(25, after: taglineAndVolume)
+        stackView.setCustomSpacing(25, after: twoColumn)
         backgroundColor = .white
+        state = .loading
     }
     
 }
