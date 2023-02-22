@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Beer: Codable {
+struct Beer: Codable, Equatable {
     let id: Double?
     let name: String?
     let tagline: String?
@@ -22,21 +22,21 @@ struct Beer: Codable {
     let description: String?
     let ingredients: Ingredients?
 
-    struct Volume: Codable {
+    struct Volume: Codable, Equatable {
         let value: Double?
         let unit: String?
     }
 
-    struct Ingredients: Codable {
+    struct Ingredients: Codable, Equatable {
         let malt: [Malt?]?
         let hops: [Hops?]?
     }
 
-    struct Malt: Codable {
+    struct Malt: Codable, Equatable {
         let name: String?
     }
 
-    struct Hops: Codable {
+    struct Hops: Codable, Equatable {
         let name: String?
     }
 }
