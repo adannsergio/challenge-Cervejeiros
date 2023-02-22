@@ -19,6 +19,18 @@
 		1822E82D2990AD9000757FF0 /* BeerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822E82C2990AD9000757FF0 /* BeerListViewModel.swift */; };
 		184275A32997F893004961F6 /* BeerListCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A22997F893004961F6 /* BeerListCollectionViewDataSource.swift */; };
 		184275A52997F8B2004961F6 /* BeerListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A42997F8B2004961F6 /* BeerListCollectionView.swift */; };
+		184275A729982FE1004961F6 /* BeerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A629982FE1004961F6 /* BeerDetailViewModel.swift */; };
+		184275AA29983148004961F6 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275A929983148004961F6 /* BeerDetailViewController.swift */; };
+		184275AD2999CDD9004961F6 /* BeerDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275AC2999CDD9004961F6 /* BeerDetailPresenter.swift */; };
+		184275B0299B1DD8004961F6 /* BeerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275AF299B1DD8004961F6 /* BeerDetailView.swift */; };
+		184275B5299DE68E004961F6 /* TwoColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275B4299DE68E004961F6 /* TwoColumn.swift */; };
+		184275B7299EE437004961F6 /* String+attributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275B6299EE437004961F6 /* String+attributedText.swift */; };
+		184275B9299EFE8D004961F6 /* Array+removeDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184275B8299EFE8D004961F6 /* Array+removeDuplicates.swift */; };
+		18B5ED1429A3D841008D2579 /* BeerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1329A3D841008D2579 /* BeerListService.swift */; };
+		18B5ED1629A3E3AE008D2579 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1529A3E3AE008D2579 /* APIClient.swift */; };
+		18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */; };
+		18B5ED1A29A3F3E2008D2579 /* APIClient+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1929A3F3E2008D2579 /* APIClient+Endpoint.swift */; };
+		18B5ED1C29A42226008D2579 /* BeerDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1B29A42226008D2579 /* BeerDetailService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +48,18 @@
 		1822E82C2990AD9000757FF0 /* BeerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListViewModel.swift; sourceTree = "<group>"; };
 		184275A22997F893004961F6 /* BeerListCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		184275A42997F8B2004961F6 /* BeerListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListCollectionView.swift; sourceTree = "<group>"; };
+		184275A629982FE1004961F6 /* BeerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewModel.swift; sourceTree = "<group>"; };
+		184275A929983148004961F6 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
+		184275AC2999CDD9004961F6 /* BeerDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailPresenter.swift; sourceTree = "<group>"; };
+		184275AF299B1DD8004961F6 /* BeerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailView.swift; sourceTree = "<group>"; };
+		184275B4299DE68E004961F6 /* TwoColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoColumn.swift; sourceTree = "<group>"; };
+		184275B6299EE437004961F6 /* String+attributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+attributedText.swift"; sourceTree = "<group>"; };
+		184275B8299EFE8D004961F6 /* Array+removeDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+removeDuplicates.swift"; sourceTree = "<group>"; };
+		18B5ED1329A3D841008D2579 /* BeerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListService.swift; sourceTree = "<group>"; };
+		18B5ED1529A3E3AE008D2579 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+ClientError.swift"; sourceTree = "<group>"; };
+		18B5ED1929A3F3E2008D2579 /* APIClient+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Endpoint.swift"; sourceTree = "<group>"; };
+		18B5ED1B29A42226008D2579 /* BeerDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +76,9 @@
 		18135B74299355CD00E40021 /* BeerDetail */ = {
 			isa = PBXGroup;
 			children = (
+				184275A829982FE7004961F6 /* Model */,
+				184275AB2998314C004961F6 /* View */,
+				184275AE2999CDDD004961F6 /* Presenter */,
 			);
 			path = BeerDetail;
 			sourceTree = "<group>";
@@ -78,26 +105,17 @@
 				1822E822298F590D00757FF0 /* System */,
 				1822E82E2990B55F00757FF0 /* Shared */,
 				1822E81E298F4B0300757FF0 /* Scene */,
-				1822E81D298F4AA500757FF0 /* Protocol */,
 				1822E825298F597400757FF0 /* Resource */,
 			);
 			path = CervejeirosSA;
 			sourceTree = "<group>";
 		};
-		1822E81D298F4AA500757FF0 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				1822E81B298F48D200757FF0 /* ViewCodeProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		1822E81E298F4B0300757FF0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				18135B74299355CD00E40021 /* BeerDetail */,
 				1822E824298F595900757FF0 /* LaunchScreen */,
 				1822E823298F593900757FF0 /* BeerList */,
+				18135B74299355CD00E40021 /* BeerDetail */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -153,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1822E82C2990AD9000757FF0 /* BeerListViewModel.swift */,
+				18B5ED1329A3D841008D2579 /* BeerListService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,9 +187,50 @@
 		1822E82E2990B55F00757FF0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				184275BC299F0E92004961F6 /* Extension */,
+				1822E81B298F48D200757FF0 /* ViewCodeProtocol.swift */,
 				1822E826299043AD00757FF0 /* Beer.swift */,
+				18B5ED1529A3E3AE008D2579 /* APIClient.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		184275A829982FE7004961F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				184275A629982FE1004961F6 /* BeerDetailViewModel.swift */,
+				18B5ED1B29A42226008D2579 /* BeerDetailService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		184275AB2998314C004961F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				184275A929983148004961F6 /* BeerDetailViewController.swift */,
+				184275AF299B1DD8004961F6 /* BeerDetailView.swift */,
+				184275B4299DE68E004961F6 /* TwoColumn.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		184275AE2999CDDD004961F6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				184275AC2999CDD9004961F6 /* BeerDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		184275BC299F0E92004961F6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				18B5ED1929A3F3E2008D2579 /* APIClient+Endpoint.swift */,
+				18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */,
+				184275B8299EFE8D004961F6 /* Array+removeDuplicates.swift */,
+				184275B6299EE437004961F6 /* String+attributedText.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,15 +303,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184275AA29983148004961F6 /* BeerDetailViewController.swift in Sources */,
 				1822E821298F4B8200757FF0 /* BeerListContainer.swift in Sources */,
+				18B5ED1A29A3F3E2008D2579 /* APIClient+Endpoint.swift in Sources */,
 				1822E82B2990784100757FF0 /* BeerListPresenter.swift in Sources */,
+				18B5ED1629A3E3AE008D2579 /* APIClient.swift in Sources */,
 				1822E827299043AD00757FF0 /* Beer.swift in Sources */,
+				18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */,
 				1822E80C298DFDDC00757FF0 /* BeerListViewController.swift in Sources */,
+				184275B7299EE437004961F6 /* String+attributedText.swift in Sources */,
+				184275B0299B1DD8004961F6 /* BeerDetailView.swift in Sources */,
 				184275A32997F893004961F6 /* BeerListCollectionViewDataSource.swift in Sources */,
+				184275B9299EFE8D004961F6 /* Array+removeDuplicates.swift in Sources */,
+				184275AD2999CDD9004961F6 /* BeerDetailPresenter.swift in Sources */,
 				1822E81C298F48D200757FF0 /* ViewCodeProtocol.swift in Sources */,
 				1822E82D2990AD9000757FF0 /* BeerListViewModel.swift in Sources */,
 				1822E808298DFDDC00757FF0 /* AppDelegate.swift in Sources */,
+				18B5ED1C29A42226008D2579 /* BeerDetailService.swift in Sources */,
 				184275A52997F8B2004961F6 /* BeerListCollectionView.swift in Sources */,
+				184275B5299DE68E004961F6 /* TwoColumn.swift in Sources */,
+				18B5ED1429A3D841008D2579 /* BeerListService.swift in Sources */,
+				184275A729982FE1004961F6 /* BeerDetailViewModel.swift in Sources */,
 				1822E80A298DFDDC00757FF0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,9 +460,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CervejeirosSA/CervejeirosSA.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P89J5888T8;
+				DEVELOPMENT_TEAM = Q248Z6X3RL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CervejeirosSA/System/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -403,11 +477,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.adannsergio.CervejeirosSA;
+				PRODUCT_BUNDLE_IDENTIFIER = me.adannsergio.challenges.cervejeiro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -415,9 +493,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CervejeirosSA/CervejeirosSA.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P89J5888T8;
+				DEVELOPMENT_TEAM = Q248Z6X3RL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CervejeirosSA/System/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -430,11 +510,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.adannsergio.CervejeirosSA;
+				PRODUCT_BUNDLE_IDENTIFIER = me.adannsergio.challenges.cervejeiro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
