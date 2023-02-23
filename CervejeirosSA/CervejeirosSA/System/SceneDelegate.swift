@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabController = UITabBarController()
         tabController.viewControllers = [beerListNavigationController, favoriteListViewController]
+        // TODO: - Criar um artigo sobre tab bars com view code, e também uma curiosidade quando é adicionado 6 ou mais view controllers
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
