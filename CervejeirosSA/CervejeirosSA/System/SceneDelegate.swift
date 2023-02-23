@@ -17,11 +17,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let beerListNavigationController = UINavigationController(rootViewController: BeerListViewController())
+        
+        let beerListViewController = BeerListViewController()
+        let beerListNavigationController = UINavigationController(rootViewController: beerListViewController)
+        let beerListTabBarItem = UITabBarItem(title: "All", image: UIImage.init(systemName: "list.bullet"), tag: 0)
+        beerListNavigationController.tabBarItem = beerListTabBarItem
+        
+        let favoriteListViewController = UIViewController()
+        favoriteListViewController.view.backgroundColor = .orange
+        let favoriteListTabBarItem = UITabBarItem(title: "Favorites", image: UIImage.init(systemName: "star.fill"), tag: 1)
+        favoriteListViewController.tabBarItem = favoriteListTabBarItem
+        
+        let tabController = UITabBarController()
+        tabController.viewControllers = [beerListNavigationController, favoriteListViewController]
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = beerListNavigationController
+        window?.rootViewController = tabController
         window?.makeKeyAndVisible()
     }
 
