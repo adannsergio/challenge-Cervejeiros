@@ -10,12 +10,14 @@ import Foundation
 protocol DefaultStorageProtocol {
     func set(value: Any?, for key: DefaultStorage.Key)
     func get<T>(from key: DefaultStorage.Key) -> T?
-    func append<T>(value: T, for key: DefaultStorage.Key)
+    func append<T: DefaultStorage.UniquelySortable>(value: T, for key: DefaultStorage.Key)
     func remove<T>(value: T, for key: DefaultStorage.Key) where T: Equatable
     func erase()
 }
 
 class DefaultStorage: DefaultStorageProtocol {
+    typealias UniquelySortable = Equatable & Comparable
+    
     private let shared: UserDefaults
 
     init(shared: UserDefaults = UserDefaults.standard) {
@@ -27,23 +29,17 @@ class DefaultStorage: DefaultStorageProtocol {
     }
 
     func get<T>(from key: Key) -> T? {
-        guard let currentValue = shared.object(forKey: key.rawValue) else {
-            return nil
-        }
-
-        return currentValue as? T
+        return shared.object(forKey: key.rawValue) as? T
     }
 
-    func append<T>(value: T, for key: Key) {
-        guard let currentValue = get(from: key) as [T]? else {
-            set(value: [value], for: key)
-            return
+    func append<T: UniquelySortable>(value: T, for key: Key) {
+        var currentValues = shared.array(forKey: key.rawValue) as? [T] ?? [T]()
+        
+        if !currentValues.contains(value) {
+            currentValues.append(value)
+            currentValues.sort(by: <)
+            shared.set(currentValues, forKey: key.rawValue)
         }
-
-        var updatedValue = currentValue as [T]
-        updatedValue.append(value)
-
-        set(value: updatedValue, for: key)
     }
 
     func remove<T>(value: T, for key: Key) where T : Equatable {

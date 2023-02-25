@@ -10,7 +10,6 @@ import UIKit
 
 final class TwoColumn: UIView {
     // MARK: - Properties
-
     private lazy var container: UIView = {
         let view = UIView(frame: .zero)
         view.preservesSuperviewLayoutMargins = true

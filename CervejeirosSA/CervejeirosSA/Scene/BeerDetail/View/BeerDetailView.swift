@@ -9,7 +9,6 @@ import UIKit
 
 final class BeerDetailView: UIView {
     // MARK: - Properties
-
     private enum BeerDetailViewState {
         case loading
         case ready

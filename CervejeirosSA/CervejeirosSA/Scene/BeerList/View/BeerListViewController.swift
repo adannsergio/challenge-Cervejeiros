@@ -41,6 +41,11 @@ class BeerListViewController: UIViewController {
     override func loadView() {
         self.view = containerView
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.rightBarButtonItem = nil
+    }
 
     func additionalSetup() {
         // TODO: - Criar um sistema de strings globais

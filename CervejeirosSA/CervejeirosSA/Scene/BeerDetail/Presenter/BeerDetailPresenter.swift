@@ -13,18 +13,22 @@ protocol BeerDetailPresenterDelegate: AnyObject {
 
 class BeerDetailPresenter {
     weak var delegate: BeerDetailPresenterDelegate?
-    let service: BeerDetailService
+    private let service: BeerDetailService
+    private let beerId: Int
+    private let defaultStorage: DefaultStorage
 
-    init(service: BeerDetailService = BeerDetailService()) {
+    init(service: BeerDetailService = BeerDetailService(), beerId: Int) {
         self.service = service
+        self.beerId = beerId
+        self.defaultStorage = DefaultStorage()
     }
 
     deinit {
         delegate = nil
     }
 
-    public func getBeerDetail(using id: Int) {
-        service.fetchDetail(of: id) { [weak self] result in
+    public func getBeerDetail() {
+        service.fetchDetail(of: beerId) { [weak self] result in
             guard let sSelf = self else { return }
 
             switch result {
@@ -45,4 +49,14 @@ class BeerDetailPresenter {
             }
         }
     }
+    
+    public func getSavedBeers() -> [Int]? {
+        let beers = defaultStorage.get(from: .beerID) as [Int]?
+        return beers
+    }
+    
+    public func saveBeer() {
+        defaultStorage.append(value: beerId, for: .beerID)
+    }
+
 }
