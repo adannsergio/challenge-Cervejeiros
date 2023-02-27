@@ -9,18 +9,22 @@ import Foundation
 
 protocol FavoriteListServiceProtocol {
     var apiClient: APIClientProtocol { get }
-    func getBeers(by ids: [Int], completion: @escaping (Result<[Beer], Error>) -> Void)
+    var defaultStorage: DefaultStorage { get }
+    func getBeersByIdsStored(completion: @escaping (Result<[Beer], Error>) -> Void)
 }
 class FavoriteListService: FavoriteListServiceProtocol {
     var apiClient: APIClientProtocol
+    var defaultStorage: DefaultStorage
     
-    init(apiClient: APIClientProtocol = APIClient()) {
+    init(apiClient: APIClientProtocol = APIClient(), defaultStorage: DefaultStorage = DefaultStorage()) {
+        self.defaultStorage = defaultStorage
         self.apiClient = apiClient
     }
     
-    func getBeers(by ids: [Int], completion: @escaping (Result<[Beer], Error>) -> Void) {
+    func getBeersByIdsStored(completion: @escaping (Result<[Beer], Error>) -> Void) {
+        guard let beersIds = defaultStorage.get(from: .beerID) as [Int]? else { return }
         
-        let queryIds = ids.map(String.init).joined(separator: "|")
+        let queryIds = beersIds.map(String.init).joined(separator: "|")
         
         let endpoint = APIClient.Endpoint(path: "beers",
                                           httpMethod: "GET",
