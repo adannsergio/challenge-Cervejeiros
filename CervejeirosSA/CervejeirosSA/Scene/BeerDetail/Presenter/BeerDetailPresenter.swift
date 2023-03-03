@@ -12,21 +12,22 @@ protocol BeerDetailPresenterDelegate: AnyObject {
 }
 
 class BeerDetailPresenter {
+    // MARK: - Properties
     weak var delegate: BeerDetailPresenterDelegate?
-    private let service: BeerDetailService
+    private let service: BeerDetailServiceProtocol
     private let beerId: Int
-    private let defaultStorage: DefaultStorage
 
+    // MARK: - Initializers
     init(service: BeerDetailService = BeerDetailService(), beerId: Int) {
         self.service = service
         self.beerId = beerId
-        self.defaultStorage = DefaultStorage()
     }
 
     deinit {
         delegate = nil
     }
-
+    
+    // MARK: - Public Methodes
     public func getBeerDetail() {
         service.fetchDetail(of: beerId) { [weak self] result in
             guard let sSelf = self else { return }
@@ -51,12 +52,13 @@ class BeerDetailPresenter {
     }
     
     public func getSavedBeers() -> [Int]? {
-        let beers = defaultStorage.get(from: .beerID) as [Int]?
-        return beers
+        return [Int]()
     }
     
-    public func saveBeer() {
-        defaultStorage.append(value: beerId, for: .beerID)
+    public func beerIsSaved() -> Bool {
+        Bool()
     }
+    
+    public func saveBeer() {}
 
 }

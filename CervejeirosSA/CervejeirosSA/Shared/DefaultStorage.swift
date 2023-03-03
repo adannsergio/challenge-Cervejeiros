@@ -11,7 +11,7 @@ protocol DefaultStorageProtocol {
     func set(value: Any?, for key: DefaultStorage.Key)
     func get<T>(from key: DefaultStorage.Key) -> T?
     func append<T: DefaultStorage.UniquelySortable>(value: T, for key: DefaultStorage.Key)
-    func remove<T>(value: T, for key: DefaultStorage.Key) where T: Equatable
+    func remove<T: Equatable>(value: T, for key: DefaultStorage.Key)
     func erase()
 }
 
@@ -42,7 +42,7 @@ class DefaultStorage: DefaultStorageProtocol {
         }
     }
 
-    func remove<T>(value: T, for key: Key) where T : Equatable {
+    func remove<T: Equatable>(value: T, for key: Key) {
         var currentValue = get(from: key) as [T]?
         currentValue?.removeAll(where: { $0 == value })
 
