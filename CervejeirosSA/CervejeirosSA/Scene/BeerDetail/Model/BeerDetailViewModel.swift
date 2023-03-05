@@ -10,7 +10,7 @@ import UIKit
 struct BeerDetailViewModel {
     let name: String
     let taglineAndVolume: String
-    let imageData: Data
+    let imageData: Data?
     let abv: NSAttributedString
     let ibu: NSAttributedString
     let ph: NSAttributedString
@@ -19,7 +19,6 @@ struct BeerDetailViewModel {
     let description: String
     let malt: NSAttributedString
     let hops: NSAttributedString
-    let isSaved: Bool
 
     struct BrewerTip {
         let tip: String
@@ -33,7 +32,7 @@ struct BeerDetailViewModel {
 
     func loadImage(from URL: URL) {}
 
-    static func cast(from beer: Beer, considering imageData: Data, and saveStatus: Bool) -> BeerDetailViewModel {
+    static func cast(from beer: Beer, considering imageData: Data?) -> BeerDetailViewModel {
         let name = beer.name ?? String()
 
         let tagline = beer.tagline ?? String()
@@ -77,7 +76,6 @@ struct BeerDetailViewModel {
                                    foodPairing: foodPairing,
                                    description: description,
                                    malt: melts,
-                                   hops: hops,
-                                   isSaved: saveStatus)
+                                   hops: hops)
     }
 }

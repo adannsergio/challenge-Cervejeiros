@@ -107,16 +107,18 @@ extension TwoColumn {
         let thirdItemText: NSAttributedString
         let fourthItemText: NSAttributedString
         let fifthItemText: NSAttributedString
-        let imageData: Data
+        let imageData: Data?
     }
 
     public func load(configuration: Configuration) {
-        leftColumnImage.image = UIImage(data: configuration.imageData)
         firstItemText.attributedText = configuration.firstItemText
         secondItemText.attributedText = configuration.secondItemText
         thirdItemText.attributedText = configuration.thirdItemText
         fourthItemText.attributedText = configuration.fourthItemText
         fifthItemText.attributedText = configuration.fifthItemText
+        
+        guard let imageData = configuration.imageData else { return  }
+        leftColumnImage.image = UIImage(data: imageData)
     }
 }
 

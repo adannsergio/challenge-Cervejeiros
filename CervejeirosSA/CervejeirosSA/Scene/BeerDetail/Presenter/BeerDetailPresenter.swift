@@ -36,17 +36,20 @@ class BeerDetailPresenter {
 
         group.enter()
         service.fetchDetail(of: beerId) { [weak self] result in
-            guard let sSelf = self else { return }
+            guard let sSelf = self else {
+                group.leave()
+                return
+            }
 
             switch result {
             case .success(let beerResult):
-                guard let firstSafeBeer = beerResult.first,
-                      let safeImageUrl = firstSafeBeer.image_url else {
+                
+                beer = beerResult.first
+                
+                guard let safeImageUrl = beerResult.first?.image_url else {
                     group.leave()
                     return
                 }
-
-                beer = firstSafeBeer
 
                 sSelf.service.downloadImage(from: safeImageUrl) { imageDataDownloaded in
                     imageData = imageDataDownloaded
@@ -61,16 +64,14 @@ class BeerDetailPresenter {
 
         group.notify(queue: .main) { [weak self] in
             guard let sSelf = self,
-                  let beer = beer,
-                  let imageData = imageData else { return }
+                  let beer = beer else { return }
 
             let beerDetailViewModel = BeerDetailViewModel.cast(from: beer,
-                                                               considering: imageData,
-                                                               and: sSelf.saveStatus)
+                                                               considering: imageData)
 
             sSelf.delegate?.loadDetails(of: beerDetailViewModel)
 
-            if beerDetailViewModel.isSaved {
+            if sSelf.saveStatus {
                 sSelf.delegate?.setDeleteButton()
             } else {
                 sSelf.delegate?.setSaveButton()
