@@ -13,10 +13,18 @@ class BeerDetailViewController: UIViewController {
     private let beerDetailView: BeerDetailView
 
     private lazy var saveButton: UIBarButtonItem = {
-        let view = UIBarButtonItem(barButtonSystemItem: .save,
+        let view = UIBarButtonItem(title: "Favorite",
+                                   image: nil,
                                    target: self,
-                                   action: #selector(favoriteButtonPressed))
-        view.isHidden = true
+                                   action: #selector(saveButtonPressed))
+        return view
+    }()
+    
+    private lazy var deleteButton: UIBarButtonItem = {
+        let view = UIBarButtonItem(title: "Unfavorite",
+                                   image: nil,
+                                   target: self,
+                                   action: #selector(deleteButtonPressed))
         return view
     }()
     
@@ -39,8 +47,6 @@ class BeerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        
-        self.navigationItem.rightBarButtonItem = saveButton
     }
 
     override func loadView() {
@@ -51,9 +57,23 @@ class BeerDetailViewController: UIViewController {
 // MARK: - Presenter Delegate
 extension BeerDetailViewController: BeerDetailPresenterDelegate {
     func loadDetails(of beer: BeerDetailViewModel) {
-        DispatchQueue.main.async {
-            self.saveButton.isHidden = false
-            self.beerDetailView.load(viewModel: beer)
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.beerDetailView.load(viewModel: beer)
+        }
+    }
+
+    func setSaveButton() {
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.navigationItem.rightBarButtonItem = sSelf.saveButton
+        }
+    }
+
+    func setDeleteButton() {
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.navigationItem.rightBarButtonItem = sSelf.deleteButton
         }
     }
 }
@@ -61,7 +81,15 @@ extension BeerDetailViewController: BeerDetailPresenterDelegate {
 // MARK: - Actions
 extension BeerDetailViewController {
     @objc
-    private func favoriteButtonPressed() {
+    private func saveButtonPressed() {
         presenter.saveBeer()
+        setDeleteButton()
     }
+    
+    @objc
+    private func deleteButtonPressed() {
+        presenter.deleteBeer()
+        setSaveButton()
+    }
+    
 }

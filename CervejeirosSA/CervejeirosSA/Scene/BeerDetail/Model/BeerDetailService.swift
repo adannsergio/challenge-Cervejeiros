@@ -8,18 +8,16 @@
 import Foundation
 
 protocol BeerDetailServiceProtocol {
-    var apiClient: APIClientProtocol { get }
-    var defaultStorage: DefaultStorage { get }
     func fetchDetail(of beerId: Int, completion: @escaping (Result<[Beer], Error>) -> Void)
     func downloadImage(from imageUrl: URL, completion: ((Data?) -> Void)?)
-    func checkIfBeerIdentifierIsStored(beerId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
+    func isBeerIdentifierStored(beerId: Int) -> Bool
     func removeBeerIdentifierFromDefaultStorage(beerId: Int)
     func addBeerIdentifierToDefaultStorage(beerId: Int)
 }
 
 class BeerDetailService: BeerDetailServiceProtocol {
-    var apiClient: APIClientProtocol
-    var defaultStorage: DefaultStorage
+    private var apiClient: APIClientProtocol
+    private var defaultStorage: DefaultStorageProtocol
 
     init(apiClient: APIClientProtocol = APIClient(),
          defaultStorage: DefaultStorage = DefaultStorage()) {
@@ -44,16 +42,16 @@ class BeerDetailService: BeerDetailServiceProtocol {
         apiClient.downloadImageData(request: endpoint.urlRequest, completion: completion)
     }
     
-    func checkIfBeerIdentifierIsStored(beerId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
-        // TODO: - Implementar função para que a tela de detalhes permita desfavoritar um item
+    func isBeerIdentifierStored(beerId: Int) -> Bool {
+        defaultStorage.contains(value: beerId, for: .beerID)
     }
     
     func removeBeerIdentifierFromDefaultStorage(beerId: Int) {
-        // TODO: - Implementar função para que uma cerveja seja removida da lista de favoritos
+        defaultStorage.remove(value: beerId, for: .beerID)
     }
     
     func addBeerIdentifierToDefaultStorage(beerId: Int) {
-        // TODO: - Implementar função para que uma cerveja seja adicionada na lista de favoritos
+        defaultStorage.append(value: beerId, for: .beerID)
     }
     
 }

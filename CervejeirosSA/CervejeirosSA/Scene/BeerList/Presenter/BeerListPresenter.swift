@@ -14,11 +14,11 @@ protocol BeerListPresenterDelegate: AnyObject {
 
 class BeerListPresenter {
     weak var delegate: BeerListPresenterDelegate?
-    let service: BeerListService
+    let service: BeerListServiceProtocol
 
     private var currentPage: Int = 1
 
-    init(service: BeerListService = BeerListService()) {
+    init(service: BeerListServiceProtocol = BeerListService()) {
         self.service = service
     }
 

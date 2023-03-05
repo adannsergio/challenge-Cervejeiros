@@ -57,15 +57,19 @@ class BeerListViewController: UIViewController {
 // MARK: - Presenter Delegate
 extension BeerListViewController: BeerListPresenterDelegate {
     func callBeerDetail(injeting beerId: Int) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            
             let beerDetailViewController = BeerDetailViewController(beerId: beerId)
-            self.navigationController?.pushViewController(beerDetailViewController, animated: true)
+            sSelf.navigationController?.pushViewController(beerDetailViewController, animated: true)
         }
     }
 
     func newList(of beers: [BeerListViewModel]) {
-        DispatchQueue.main.async {
-            self.beerListDataSource.appendList(of: beers)
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            
+            sSelf.beerListDataSource.appendList(of: beers)
         }
     }
 }
