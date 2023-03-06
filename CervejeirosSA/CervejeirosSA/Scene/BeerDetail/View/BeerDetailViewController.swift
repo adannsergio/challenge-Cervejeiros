@@ -63,14 +63,14 @@ extension BeerDetailViewController: BeerDetailPresenterDelegate {
         }
     }
 
-    func setSaveButton() {
+    func configureSaveButton() {
         DispatchQueue.main.async { [weak self] in
             guard let sSelf = self else { return }
             sSelf.navigationItem.rightBarButtonItem = sSelf.saveButton
         }
     }
 
-    func setDeleteButton() {
+    func configureDeleteButton() {
         DispatchQueue.main.async { [weak self] in
             guard let sSelf = self else { return }
             sSelf.navigationItem.rightBarButtonItem = sSelf.deleteButton
@@ -83,13 +83,13 @@ extension BeerDetailViewController {
     @objc
     private func saveButtonPressed() {
         presenter.saveBeer()
-        setDeleteButton()
+        configureDeleteButton()
     }
     
     @objc
     private func deleteButtonPressed() {
         presenter.deleteBeer()
-        setSaveButton()
+        configureSaveButton()
     }
     
 }

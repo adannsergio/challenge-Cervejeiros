@@ -23,8 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let beerListTabBarItem = UITabBarItem(title: "All", image: UIImage.init(systemName: "list.bullet"), tag: 0)
         beerListNavigationController.tabBarItem = beerListTabBarItem
         
-        let favoriteListViewController = UIViewController()
-        favoriteListViewController.view.backgroundColor = .orange
+        let favoriteListViewController = FavoriteListViewController()
         let favoriteListTabBarItem = UITabBarItem(title: "Favorites", image: UIImage.init(systemName: "star.fill"), tag: 1)
         favoriteListViewController.tabBarItem = favoriteListTabBarItem
         

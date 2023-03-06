@@ -9,8 +9,8 @@ import Foundation
 
 protocol BeerDetailPresenterDelegate: AnyObject {
     func loadDetails(of beer: BeerDetailViewModel)
-    func setSaveButton()
-    func setDeleteButton()
+    func configureSaveButton()
+    func configureDeleteButton()
 }
 
 class BeerDetailPresenter {
@@ -18,13 +18,13 @@ class BeerDetailPresenter {
     weak var delegate: BeerDetailPresenterDelegate?
     private let service: BeerDetailServiceProtocol
     private let beerId: Int
-    private let saveStatus: Bool
+    private let isBeerSaved: Bool
 
     // MARK: - Initializers
     init(service: BeerDetailService = BeerDetailService(), beerId: Int) {
         self.service = service
         self.beerId = beerId
-        self.saveStatus = service.isBeerIdentifierStored(beerId: beerId)
+        self.isBeerSaved = service.isBeerIdentifierStored(beerId: beerId)
     }
 
     // MARK: - Public Methodes
@@ -71,11 +71,7 @@ class BeerDetailPresenter {
 
             sSelf.delegate?.loadDetails(of: beerDetailViewModel)
 
-            if sSelf.saveStatus {
-                sSelf.delegate?.setDeleteButton()
-            } else {
-                sSelf.delegate?.setSaveButton()
-            }
+            sSelf.isBeerSaved ? sSelf.delegate?.configureDeleteButton() : sSelf.delegate?.configureSaveButton()
         }
     }
 

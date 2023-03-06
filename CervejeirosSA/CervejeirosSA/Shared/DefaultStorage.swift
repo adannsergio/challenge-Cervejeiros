@@ -46,13 +46,7 @@ class DefaultStorage: DefaultStorageProtocol {
     func contains<T: Equatable>(value: T, for key: Key) -> Bool {
         let currentValues = shared.array(forKey: key.rawValue) as? [T] ?? [T]()
         
-        if currentValues.contains(value) {
-            return true
-        }
-        else {
-            return false
-        }
-        
+        return currentValues.contains(value)
     }
     
     func remove<T: Equatable>(value: T, for key: Key) {
