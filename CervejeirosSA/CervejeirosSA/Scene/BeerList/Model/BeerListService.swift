@@ -8,12 +8,11 @@
 import Foundation
 
 protocol BeerListServiceProtocol {
-    var apiClient: APIClientProtocol { get }
     func fetchBeers(page: Int, completion: @escaping (Result<[Beer], Error>) -> Void)
 }
 
 class BeerListService: BeerListServiceProtocol {
-    var apiClient: APIClientProtocol
+    private var apiClient: APIClientProtocol
 
     init(apiClient: APIClientProtocol = APIClient()) { self.apiClient = apiClient }
 

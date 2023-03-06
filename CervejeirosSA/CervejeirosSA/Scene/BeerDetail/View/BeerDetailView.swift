@@ -9,13 +9,12 @@ import UIKit
 
 final class BeerDetailView: UIView {
     // MARK: - Properties
-
-    private enum BeerDetailViewState {
+    private enum State {
         case loading
         case ready
     }
 
-    private var state: BeerDetailViewState {
+    private var state: State {
         didSet {
             switch state {
             case .ready:
@@ -29,6 +28,7 @@ final class BeerDetailView: UIView {
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        if state == .loading { view.isHidden = true }
         return view
     }()
 
@@ -240,6 +240,5 @@ extension BeerDetailView: ViewCodeProtocol {
         stackView.setCustomSpacing(25, after: taglineAndVolume)
         stackView.setCustomSpacing(25, after: twoColumn)
         backgroundColor = .white
-        state = .loading
     }
 }

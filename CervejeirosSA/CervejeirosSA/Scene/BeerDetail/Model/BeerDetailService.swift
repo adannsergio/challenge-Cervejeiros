@@ -7,17 +7,22 @@
 
 import Foundation
 
-protocol BeerDetailProtocol {
-    var apiClient: APIClientProtocol { get }
+protocol BeerDetailServiceProtocol {
     func fetchDetail(of beerId: Int, completion: @escaping (Result<[Beer], Error>) -> Void)
     func downloadImage(from imageUrl: URL, completion: ((Data?) -> Void)?)
+    func isBeerIdentifierStored(beerId: Int) -> Bool
+    func removeBeerIdentifierFromDefaultStorage(beerId: Int)
+    func addBeerIdentifierToDefaultStorage(beerId: Int)
 }
 
-class BeerDetailService: BeerDetailProtocol {
-    var apiClient: APIClientProtocol
+class BeerDetailService: BeerDetailServiceProtocol {
+    private var apiClient: APIClientProtocol
+    private var defaultStorage: DefaultStorageProtocol
 
-    init(apiClient: APIClientProtocol = APIClient()) {
+    init(apiClient: APIClientProtocol = APIClient(),
+         defaultStorage: DefaultStorage = DefaultStorage()) {
         self.apiClient = apiClient
+        self.defaultStorage = defaultStorage
     }
 
     func fetchDetail(of beerId: Int, completion: @escaping (Result<[Beer], Error>) -> Void) {
@@ -36,4 +41,17 @@ class BeerDetailService: BeerDetailProtocol {
 
         apiClient.downloadImageData(request: endpoint.urlRequest, completion: completion)
     }
+    
+    func isBeerIdentifierStored(beerId: Int) -> Bool {
+        defaultStorage.contains(value: beerId, for: .beerID)
+    }
+    
+    func removeBeerIdentifierFromDefaultStorage(beerId: Int) {
+        defaultStorage.remove(value: beerId, for: .beerID)
+    }
+    
+    func addBeerIdentifierToDefaultStorage(beerId: Int) {
+        defaultStorage.append(value: beerId, for: .beerID)
+    }
+    
 }
