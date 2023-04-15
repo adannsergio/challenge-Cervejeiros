@@ -24,16 +24,21 @@ extension APIClient {
             self.queryItens = queryItens
         }
 
-        var urlRequest: URLRequest {
+        func asURLRequest() throws -> URLRequest {
             var urlComponents = URLComponents(url: baseURL.appendingPathComponent(path), resolvingAgainstBaseURL: true)
-
+            
             if let urlParameters = queryItens {
                 urlComponents?.queryItems = urlParameters.map { key, value in
                     URLQueryItem(name: key, value: String(describing: value))
                 }
             }
-
-            let request = URLRequest(url: (urlComponents?.url)!)
+            
+            guard let url = urlComponents?.url else {
+                throw ClientError.invalidURL
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = httpMethod
 
             return request
         }

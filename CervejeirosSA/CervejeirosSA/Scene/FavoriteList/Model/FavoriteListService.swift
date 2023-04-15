@@ -27,7 +27,10 @@ class FavoriteListService: FavoriteListServiceProtocol {
         let endpoint = APIClient.Endpoint(path: "beers",
                                           httpMethod: "GET",
                                           queryItens: ["ids": queryIds])
-        
-        apiClient.request(request: endpoint.urlRequest, completion: completion)
+        do {
+            try apiClient.request(request: endpoint.asURLRequest(), completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

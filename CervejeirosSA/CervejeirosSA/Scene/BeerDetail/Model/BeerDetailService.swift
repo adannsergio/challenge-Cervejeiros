@@ -29,8 +29,12 @@ class BeerDetailService: BeerDetailServiceProtocol {
         let endpoint: APIClient.Endpoint = .init(path: "beers/\(beerId)",
                                                  httpMethod: "GET",
                                                  queryItens: nil)
-
-        apiClient.request(request: endpoint.urlRequest, completion: completion)
+        do {
+            try apiClient.request(request: endpoint.asURLRequest(), completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
+        
     }
 
     func downloadImage(from imageUrl: URL, completion: ((Data?) -> Void)? = nil) {
@@ -38,8 +42,12 @@ class BeerDetailService: BeerDetailServiceProtocol {
                                                  path: String(),
                                                  httpMethod: "GET",
                                                  queryItens: nil)
+        do {
+            try apiClient.downloadImageData(request: endpoint.asURLRequest(), completion: completion)
+        } catch {
+            completion?(nil)
+        }
 
-        apiClient.downloadImageData(request: endpoint.urlRequest, completion: completion)
     }
     
     func isBeerIdentifierStored(beerId: Int) -> Bool {

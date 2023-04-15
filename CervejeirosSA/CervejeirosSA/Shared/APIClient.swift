@@ -29,7 +29,7 @@ class APIClient: APIClientProtocol {
                 let decodedData = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedData))
             } catch {
-                completion(.failure(error))
+                completion(.failure(ClientError.decodingError))
             }
         }
         task.resume()

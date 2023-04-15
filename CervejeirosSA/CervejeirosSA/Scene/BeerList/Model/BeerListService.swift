@@ -21,7 +21,11 @@ class BeerListService: BeerListServiceProtocol {
                                                  httpMethod: "GET",
                                                  queryItens: ["page": page,
                                                               "per_page": 20])
-
-        apiClient.request(request: endpoint.urlRequest, completion: completion)
+        do {
+            try apiClient.request(request: endpoint.asURLRequest(), completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
+        
     }
 }
