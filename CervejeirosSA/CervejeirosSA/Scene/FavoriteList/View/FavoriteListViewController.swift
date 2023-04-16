@@ -32,6 +32,7 @@ class FavoriteListViewController: UIViewController {
         super.viewDidLoad()
 
         self.presenter.delegate = self
+        containerView.favoriteList.delegate = self
         additionalSetup()
     }
 
@@ -62,5 +63,7 @@ extension FavoriteListViewController: FavoriteListPresenterDelegate {
 
 // MARK: - CollectionView Delegate
 extension FavoriteListViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
 }

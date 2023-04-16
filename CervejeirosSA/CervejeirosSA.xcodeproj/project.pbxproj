@@ -35,6 +35,7 @@
 		18B39EEC29EB43AE003D3B46 /* FavoriteListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EEB29EB43AE003D3B46 /* FavoriteListCollectionView.swift */; };
 		18B39EEE29EB4F54003D3B46 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EED29EB4F54003D3B46 /* FavoriteViewModel.swift */; };
 		18B39EF029EB59C8003D3B46 /* FavoriteListCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EEF29EB59C8003D3B46 /* FavoriteListCollectionViewDataSource.swift */; };
+		18B39EF229EB87E6003D3B46 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EF129EB87E6003D3B46 /* FavoriteCollectionViewCell.swift */; };
 		18B5ED1429A3D841008D2579 /* BeerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1329A3D841008D2579 /* BeerListService.swift */; };
 		18B5ED1629A3E3AE008D2579 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1529A3E3AE008D2579 /* APIClient.swift */; };
 		18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */; };
@@ -85,6 +86,7 @@
 		18B39EEB29EB43AE003D3B46 /* FavoriteListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCollectionView.swift; sourceTree = "<group>"; };
 		18B39EED29EB4F54003D3B46 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		18B39EEF29EB59C8003D3B46 /* FavoriteListCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		18B39EF129EB87E6003D3B46 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		18B5ED1329A3D841008D2579 /* BeerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListService.swift; sourceTree = "<group>"; };
 		18B5ED1529A3E3AE008D2579 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+ClientError.swift"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				18B39EE929EB4207003D3B46 /* FavoriteListContainer.swift */,
 				18B39EEB29EB43AE003D3B46 /* FavoriteListCollectionView.swift */,
 				18B39EEF29EB59C8003D3B46 /* FavoriteListCollectionViewDataSource.swift */,
+				18B39EF129EB87E6003D3B46 /* FavoriteCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				18B5ED1429A3D841008D2579 /* BeerListService.swift in Sources */,
 				184275A729982FE1004961F6 /* BeerDetailViewModel.swift in Sources */,
 				18B39EEE29EB4F54003D3B46 /* FavoriteViewModel.swift in Sources */,
+				18B39EF229EB87E6003D3B46 /* FavoriteCollectionViewCell.swift in Sources */,
 				186B93E229AAC7710092587B /* FavoriteListPresenter.swift in Sources */,
 				1822E80A298DFDDC00757FF0 /* SceneDelegate.swift in Sources */,
 			);

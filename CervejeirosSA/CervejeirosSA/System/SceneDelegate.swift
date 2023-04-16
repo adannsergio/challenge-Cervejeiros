@@ -24,11 +24,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         beerListNavigationController.tabBarItem = beerListTabBarItem
         
         let favoriteListViewController = FavoriteListViewController()
+        let favoriteListNavigationController = UINavigationController(rootViewController: favoriteListViewController)
+
         let favoriteListTabBarItem = UITabBarItem(title: "Favorites", image: UIImage.init(systemName: "star.fill"), tag: 1)
         favoriteListViewController.tabBarItem = favoriteListTabBarItem
         
         let tabController = UITabBarController()
-        tabController.viewControllers = [beerListNavigationController, favoriteListViewController]
+        tabController.viewControllers = [beerListNavigationController, favoriteListNavigationController]
         // TODO: - Criar um artigo sobre tab bars com view code, e também uma curiosidade quando é adicionado 6 ou mais view controllers
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)

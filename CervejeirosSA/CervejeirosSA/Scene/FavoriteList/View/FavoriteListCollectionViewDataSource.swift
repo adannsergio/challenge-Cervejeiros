@@ -16,21 +16,15 @@ final class FavoriteListCollectionViewDataSource {
         return diffableDataSource
     }()
 
-    private let beerCellConfigured = UICollectionView.CellRegistration<UICollectionViewListCell,
-                                                                       FavoriteViewModel> { (cell, indexPath, item) in
-        var cellConfiguration = cell.defaultContentConfiguration()
-        cellConfiguration.text = "\(item.name)"
-        cellConfiguration.secondaryText = "\(item.id)"
-
-        cell.contentConfiguration = cellConfiguration
-        cell.accessories = [UICellAccessory.disclosureIndicator()]
+    private let favoriteCellConfigured = UICollectionView.CellRegistration<FavoriteCollectionViewCell, FavoriteViewModel> { (cell, indexPath, item) in
+        cell.load(configuration: FavoriteCollectionViewCell.Configuration(imageData: nil,
+                                                                          beerName: item.name))
     }
 
     required init(for collectionView: UICollectionView) {
-        diffableDataSource = UICollectionViewDiffableDataSource<FavoriteListCollectionView.Section,
-                                                                FavoriteViewModel>(collectionView: collectionView) {
+        diffableDataSource = UICollectionViewDiffableDataSource<FavoriteListCollectionView.Section, FavoriteViewModel>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: FavoriteViewModel) -> UICollectionViewCell? in
-            return collectionView.dequeueConfiguredReusableCell(using: self.beerCellConfigured, for: indexPath, item: identifier)
+            return collectionView.dequeueConfiguredReusableCell(using: self.favoriteCellConfigured, for: indexPath, item: identifier)
         }
 
         // initial empty data
@@ -39,12 +33,12 @@ final class FavoriteListCollectionViewDataSource {
 
     func appendList(of beers: [FavoriteViewModel]) {
         restartSnapshot()
-        
+
         snapshot.appendItems(beers)
-        
+
         diffableDataSource.applySnapshotUsingReloadData(snapshot)
     }
-    
+
     private func restartSnapshot() {
         snapshot.deleteAllItems()
         snapshot.appendSections([.main])

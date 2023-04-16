@@ -11,17 +11,22 @@ class FavoriteListCollectionView: UICollectionView {
     enum Section {
         case main
     }
-    
+
     convenience init() {
         self.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         setupLayout()
     }
-    
-    internal func setupLayout() {
-        let insetGroupedLayout = UICollectionLayoutListConfiguration(appearance:  .insetGrouped)
-        let listLayout = UICollectionViewCompositionalLayout.list(using: insetGroupedLayout)
 
-        self.collectionViewLayout = listLayout
-        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    internal func setupLayout() {
+        let layout = UICollectionViewCompositionalLayout { section, layoutEnvironment in
+            let config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+            let layoutSection =  NSCollectionLayoutSection.list(using: config, layoutEnvironment: layoutEnvironment)
+            layoutSection.interGroupSpacing = 20
+            return layoutSection
+        }
+
+        collectionViewLayout = layout
+
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 }
