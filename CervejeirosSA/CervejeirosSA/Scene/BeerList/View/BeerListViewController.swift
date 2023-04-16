@@ -48,7 +48,6 @@ class BeerListViewController: UIViewController {
     }
 
     func additionalSetup() {
-        // TODO: - Criar um sistema de strings globais
         self.navigationItem.title = "Beer List"
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }

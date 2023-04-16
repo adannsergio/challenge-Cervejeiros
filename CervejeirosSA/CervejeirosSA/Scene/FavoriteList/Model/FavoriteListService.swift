@@ -10,15 +10,17 @@ import Foundation
 protocol FavoriteListServiceProtocol {
     func getBeersByIdsStored(completion: @escaping (Result<[Beer], Error>) -> Void)
 }
+
 class FavoriteListService: FavoriteListServiceProtocol {
     private var apiClient: APIClientProtocol
     private var defaultStorage: DefaultStorage
-    
-    init(apiClient: APIClientProtocol = APIClient(), defaultStorage: DefaultStorage = DefaultStorage()) {
+
+    init(apiClient: APIClientProtocol = APIClient(),
+         defaultStorage: DefaultStorage = DefaultStorage()) {
         self.defaultStorage = defaultStorage
         self.apiClient = apiClient
     }
-    
+
     func getBeersByIdsStored(completion: @escaping (Result<[Beer], Error>) -> Void) {
         guard let beersIds = defaultStorage.get(from: .beerID) as [Int]? else { return }
         

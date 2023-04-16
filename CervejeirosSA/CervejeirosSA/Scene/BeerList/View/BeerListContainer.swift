@@ -35,10 +35,12 @@ extension BeerListContainer: ViewCodeProtocol {
     }
 
     func setConstraints() {
-        beerListCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        beerListCollectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        beerListCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        beerListCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            beerListCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            beerListCollectionView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            beerListCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            beerListCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 
     func setAdditionalConfiguration() {}
