@@ -40,11 +40,11 @@ class FavoriteListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.presenter.getFavoriteBeers()
     }
-    
+
     override func loadView() {
         self.view = containerView
     }
-    
+
     private func additionalSetup() {
         self.navigationItem.title = "My Favorite Beers"
     }
@@ -55,17 +55,17 @@ extension FavoriteListViewController: FavoriteListPresenterDelegate {
     func callBeerDetail(injecting beerId: Int) {
         DispatchQueue.main.async { [weak self] in
             guard let sSelf = self else { return }
-            
+
             let beerDetailViewController = BeerDetailViewController(beerId: beerId)
             sSelf.navigationController?.pushViewController(beerDetailViewController, animated: true)
         }
     }
-    
+
     func loadFavorite(beers: [FavoriteViewModel]) {
         DispatchQueue.main.async { [weak self] in
             guard let sSelf = self else { return }
-            
-            sSelf.favoriteListDataSource.appendList(of: beers)
+
+            sSelf.favoriteListDataSource.newList(of: beers)
         }
     }
 }

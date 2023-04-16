@@ -36,6 +36,7 @@
 		18B39EEE29EB4F54003D3B46 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EED29EB4F54003D3B46 /* FavoriteViewModel.swift */; };
 		18B39EF029EB59C8003D3B46 /* FavoriteListCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EEF29EB59C8003D3B46 /* FavoriteListCollectionViewDataSource.swift */; };
 		18B39EF229EB87E6003D3B46 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EF129EB87E6003D3B46 /* FavoriteCollectionViewCell.swift */; };
+		18B39EF429EC6DB9003D3B46 /* URL+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B39EF329EC6DB9003D3B46 /* URL+DownloadImage.swift */; };
 		18B5ED1429A3D841008D2579 /* BeerListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1329A3D841008D2579 /* BeerListService.swift */; };
 		18B5ED1629A3E3AE008D2579 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1529A3E3AE008D2579 /* APIClient.swift */; };
 		18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */; };
@@ -87,6 +88,7 @@
 		18B39EED29EB4F54003D3B46 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		18B39EEF29EB59C8003D3B46 /* FavoriteListCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		18B39EF129EB87E6003D3B46 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		18B39EF329EC6DB9003D3B46 /* URL+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+DownloadImage.swift"; sourceTree = "<group>"; };
 		18B5ED1329A3D841008D2579 /* BeerListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListService.swift; sourceTree = "<group>"; };
 		18B5ED1529A3E3AE008D2579 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+ClientError.swift"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				18B5ED1729A3F3C8008D2579 /* APIClient+ClientError.swift */,
 				184275B8299EFE8D004961F6 /* Array+removeDuplicates.swift */,
 				184275B6299EE437004961F6 /* String+attributedText.swift */,
+				18B39EF329EC6DB9003D3B46 /* URL+DownloadImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				18B5ED1829A3F3C8008D2579 /* APIClient+ClientError.swift in Sources */,
 				1822E80C298DFDDC00757FF0 /* BeerListViewController.swift in Sources */,
 				184275B7299EE437004961F6 /* String+attributedText.swift in Sources */,
+				18B39EF429EC6DB9003D3B46 /* URL+DownloadImage.swift in Sources */,
 				186B93DE29A9B2B80092587B /* FavoriteListService.swift in Sources */,
 				1806D4EE29A7833A006C9FD1 /* DefaultStorage.swift in Sources */,
 				18B39EEC29EB43AE003D3B46 /* FavoriteListCollectionView.swift in Sources */,

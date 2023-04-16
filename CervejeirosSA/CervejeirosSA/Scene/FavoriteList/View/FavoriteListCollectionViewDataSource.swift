@@ -17,7 +17,7 @@ final class FavoriteListCollectionViewDataSource {
     }()
 
     private let favoriteCellConfigured = UICollectionView.CellRegistration<FavoriteCollectionViewCell, FavoriteViewModel> { (cell, indexPath, item) in
-        cell.load(configuration: FavoriteCollectionViewCell.Configuration(imageData: nil,
+        cell.load(configuration: FavoriteCollectionViewCell.Configuration(imageURL: item.imageURL,
                                                                           beerName: item.name))
     }
 
@@ -31,12 +31,12 @@ final class FavoriteListCollectionViewDataSource {
         diffableDataSource.apply(snapshot, animatingDifferences: false)
     }
 
-    func appendList(of beers: [FavoriteViewModel]) {
+    func newList(of beers: [FavoriteViewModel]) {
         restartSnapshot()
 
         snapshot.appendItems(beers)
 
-        diffableDataSource.applySnapshotUsingReloadData(snapshot)
+        diffableDataSource.apply(snapshot)
     }
 
     private func restartSnapshot() {

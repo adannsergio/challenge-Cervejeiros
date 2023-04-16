@@ -41,15 +41,19 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
 
 extension FavoriteCollectionViewCell {
     struct Configuration {
-        let imageData: Data?
+        let imageURL: URL?
         let beerName: String
     }
 
     public func load(configuration: Configuration) {
         beerName.text = configuration.beerName
 
-        guard let imageData = configuration.imageData else { return }
-        beerImage.image = UIImage(data: imageData)
+        guard let imageURL = configuration.imageURL else { return }
+        
+        imageURL.downloadImage { [weak self] image in
+            guard let sSelf = self else { return }
+            sSelf.beerImage.image = image
+        }
     }
 }
 
@@ -71,7 +75,7 @@ extension FavoriteCollectionViewCell: ViewCodeProtocol {
             beerImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
             beerImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 4/9),
             
-            beerName.leadingAnchor.constraint(equalTo: beerImage.trailingAnchor, constant: 5),
+            beerName.leadingAnchor.constraint(equalTo: beerImage.trailingAnchor),
             beerName.topAnchor.constraint(equalTo: topAnchor),
             beerName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             beerName.bottomAnchor.constraint(equalTo: bottomAnchor)
