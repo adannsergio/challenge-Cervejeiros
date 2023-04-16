@@ -30,8 +30,6 @@ struct BeerDetailViewModel {
         let unit: String
     }
 
-    func loadImage(from URL: URL) {}
-
     static func cast(from beer: Beer, considering imageData: Data?) -> BeerDetailViewModel {
         let name = beer.name ?? String()
 

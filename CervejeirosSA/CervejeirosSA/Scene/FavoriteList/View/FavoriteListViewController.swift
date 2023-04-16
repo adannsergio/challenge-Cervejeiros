@@ -52,6 +52,15 @@ class FavoriteListViewController: UIViewController {
 
 // MARK: - Presenter Delegate
 extension FavoriteListViewController: FavoriteListPresenterDelegate {
+    func callBeerDetail(injecting beerId: Int) {
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            
+            let beerDetailViewController = BeerDetailViewController(beerId: beerId)
+            sSelf.navigationController?.pushViewController(beerDetailViewController, animated: true)
+        }
+    }
+    
     func loadFavorite(beers: [FavoriteViewModel]) {
         DispatchQueue.main.async { [weak self] in
             guard let sSelf = self else { return }
@@ -63,7 +72,14 @@ extension FavoriteListViewController: FavoriteListPresenterDelegate {
 
 // MARK: - CollectionView Delegate
 extension FavoriteListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        NSLog("Touch on indexPath.row: %d", indexPath.row)
+        
+        self.containerView.favoriteList.deselectItem(at: indexPath, animated: true)
+        
+        let beerSelected = favoriteListDataSource.snapshot.itemIdentifiers(inSection: .main)[indexPath.row]
+        
+        self.presenter.didSelect(beerSelected)
     }
 }

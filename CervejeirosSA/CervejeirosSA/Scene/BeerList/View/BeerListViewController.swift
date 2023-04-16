@@ -55,7 +55,7 @@ class BeerListViewController: UIViewController {
 
 // MARK: - Presenter Delegate
 extension BeerListViewController: BeerListPresenterDelegate {
-    func callBeerDetail(injeting beerId: Int) {
+    func callBeerDetail(injecting beerId: Int) {
         DispatchQueue.main.async { [weak self] in
             guard let sSelf = self else { return }
             

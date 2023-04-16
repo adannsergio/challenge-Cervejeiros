@@ -21,7 +21,8 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
         let view = UILabel(frame: .zero)
         view.font = UIFont.systemFont(ofSize: 16)
         view.textAlignment = .left
-        view.text = "ABV property"
+        view.text = "Beer Name"
+        view.numberOfLines = 0
         view.sizeToFit()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -59,7 +60,12 @@ extension FavoriteCollectionViewCell: ViewCodeProtocol {
     }
 
     func setConstraints() {
+        let cellHeight = heightAnchor.constraint(equalToConstant: 150)
+        cellHeight.priority = .defaultHigh
+        
         NSLayoutConstraint.activate([
+            cellHeight,
+            
             beerImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             beerImage.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             beerImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
@@ -67,13 +73,9 @@ extension FavoriteCollectionViewCell: ViewCodeProtocol {
             
             beerName.leadingAnchor.constraint(equalTo: beerImage.trailingAnchor, constant: 5),
             beerName.topAnchor.constraint(equalTo: topAnchor),
-            beerName.trailingAnchor.constraint(equalTo: trailingAnchor),
-            beerName.bottomAnchor.constraint(equalTo: bottomAnchor),
+            beerName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            beerName.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-
-        let cellHeight = heightAnchor.constraint(equalToConstant: 150)
-        cellHeight.priority = .defaultHigh
-        cellHeight.isActive = true
     }
 
     func setAdditionalConfiguration() {

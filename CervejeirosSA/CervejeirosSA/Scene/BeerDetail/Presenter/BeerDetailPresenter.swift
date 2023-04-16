@@ -36,10 +36,7 @@ class BeerDetailPresenter {
 
         group.enter()
         service.fetchDetail(of: beerId) { [weak self] result in
-            guard let sSelf = self else {
-                group.leave()
-                return
-            }
+            guard let sSelf = self else { group.leave(); return }
 
             switch result {
             case .success(let beerResult):

@@ -9,6 +9,7 @@ import Foundation
 
 protocol FavoriteListPresenterDelegate: AnyObject {
     func loadFavorite(beers: [FavoriteViewModel])
+    func callBeerDetail(injecting beerId: Int)
 }
 
 class FavoriteListPresenter {
@@ -19,6 +20,10 @@ class FavoriteListPresenter {
         self.service = service
     }
 
+    func didSelect(_ beer: FavoriteViewModel) {
+        delegate?.callBeerDetail(injecting: Int(beer.id))
+    }
+    
     func getFavoriteBeers() {
         service.getBeersByIdsStored { [weak self] result in
             guard let sSelf = self else { return }

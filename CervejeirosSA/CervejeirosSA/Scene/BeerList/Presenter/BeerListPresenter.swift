@@ -9,7 +9,7 @@ import UIKit
 
 protocol BeerListPresenterDelegate: AnyObject {
     func newList(of beers: [BeerListViewModel])
-    func callBeerDetail(injeting beerId: Int)
+    func callBeerDetail(injecting beerId: Int)
 }
 
 class BeerListPresenter {
@@ -23,7 +23,7 @@ class BeerListPresenter {
     }
 
     func didSelect(_ beer: BeerListViewModel) {
-        delegate?.callBeerDetail(injeting: Int(beer.id))
+        delegate?.callBeerDetail(injecting: Int(beer.id))
     }
 
     func getBeers() {
