@@ -11,8 +11,8 @@ protocol BeerDetailServiceProtocol {
     func fetchDetail(of beerId: Int, completion: @escaping (Result<[Beer], Error>) -> Void)
     func downloadImage(from imageUrl: URL, completion: ((Data?) -> Void)?)
     func isBeerIdentifierStored(beerId: Int) -> Bool
-    func removeBeerIdentifierFromDefaultStorage(beerId: Int)
-    func addBeerIdentifierToDefaultStorage(beerId: Int)
+    func removeBeerIdentifierStored(beerId: Int)
+    func storeBeerIdentifier(beerId: Int)
 }
 
 class BeerDetailService: BeerDetailServiceProtocol {
@@ -54,11 +54,11 @@ class BeerDetailService: BeerDetailServiceProtocol {
         defaultStorage.contains(value: beerId, for: .beerID)
     }
     
-    func removeBeerIdentifierFromDefaultStorage(beerId: Int) {
+    func removeBeerIdentifierStored(beerId: Int) {
         defaultStorage.remove(value: beerId, for: .beerID)
     }
     
-    func addBeerIdentifierToDefaultStorage(beerId: Int) {
+    func storeBeerIdentifier(beerId: Int) {
         defaultStorage.append(value: beerId, for: .beerID)
     }
     

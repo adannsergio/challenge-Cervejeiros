@@ -21,7 +21,7 @@ class FavoriteListPresenter {
     }
 
     func didSelect(_ beer: FavoriteViewModel) {
-        delegate?.callBeerDetail(injecting: Int(beer.id))
+        delegate?.callBeerDetail(injecting: Int(beer.beerId))
     }
     
     func getFavoriteBeers() {

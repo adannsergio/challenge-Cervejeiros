@@ -34,15 +34,15 @@ https://github.com/paggcerto-sa/desafios/blob/master/mobile-android.md
 **Requisitos funcionais:**
 - [x] O usuário deve conseguir visualizar uma Lista de Cervejas do catálogo Cervejeiros SA, na qual cada elemento único contém informações de uma cerveja
 - [x] O usuário deve conseguir selecionar uma cerveja, na Lista de Cervejas, e visualizar em uma tela própria os Detalhes da Cerveja selecionada: imagem, nome, descrição, ingredientes; *outros itens poderão ser adicionados*
-- [ ] O usuário deve conseguir visualizar uma Lista de Cervejas Favoritas
-- [ ] O usuário deve conseguir adicionar uma cerveja na Lista de Cervejas Favoritas quando estiver visualizando os detalhes dessa cerveja
+- [x] O usuário deve conseguir visualizar uma Lista de Cervejas Favoritas
+- [x] O usuário deve conseguir adicionar uma cerveja na Lista de Cervejas Favoritas quando estiver visualizando os detalhes dessa cerveja
 - [x] O usuário deve conseguir deslizar a Lista de Cervejas para baixo, e assim visualizar mais cervejas disponíveis no catálogo online da Cervejeiros SA
 - [ ] O usuário deve conseguir buscar por nome de cervejas, em todo o catálogo online da Cervejeiros SA
 - [ ] O usuário deve conseguir filtrar cervejas na Lista de Cervejas do catálogo Cervejeiros SA; *parâmetros de filtro a definir*
 
 **Requisitos não funcionais:**
 - [ ] Arquitetura MVP (Model-View-Presenter); *Na verdade MVP nesse caso é um design pattern, não uma arquitetura*
-- [ ] O usuário deve conseguir acessar a Lista de Cervejas Favoritas a qualquer momento
+- [x] O usuário deve conseguir acessar a Lista de Cervejas Favoritas a qualquer momento
 - [x] Utilizar a API PunkAPI
 
 ---

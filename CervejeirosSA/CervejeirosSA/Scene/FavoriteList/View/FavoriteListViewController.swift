@@ -74,8 +74,6 @@ extension FavoriteListViewController: FavoriteListPresenterDelegate {
 extension FavoriteListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        NSLog("Touch on indexPath.row: %d", indexPath.row)
-        
         self.containerView.favoriteList.deselectItem(at: indexPath, animated: true)
         
         let beerSelected = favoriteListDataSource.snapshot.itemIdentifiers(inSection: .main)[indexPath.row]

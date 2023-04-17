@@ -73,10 +73,10 @@ class BeerDetailPresenter {
     }
 
     public func saveBeer() {
-        service.addBeerIdentifierToDefaultStorage(beerId: beerId)
+        service.storeBeerIdentifier(beerId: beerId)
     }
 
     public func deleteBeer() {
-        service.removeBeerIdentifierFromDefaultStorage(beerId: beerId)
+        service.removeBeerIdentifierStored(beerId: beerId)
     }
 }
