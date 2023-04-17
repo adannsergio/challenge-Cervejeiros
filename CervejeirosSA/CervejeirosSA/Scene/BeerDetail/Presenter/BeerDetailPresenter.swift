@@ -9,40 +9,74 @@ import Foundation
 
 protocol BeerDetailPresenterDelegate: AnyObject {
     func loadDetails(of beer: BeerDetailViewModel)
+    func configureSaveButton()
+    func configureDeleteButton()
 }
 
 class BeerDetailPresenter {
+    // MARK: - Properties
     weak var delegate: BeerDetailPresenterDelegate?
-    let service: BeerDetailService
+    private let service: BeerDetailServiceProtocol
+    private let beerId: Int
+    private let isBeerSaved: Bool
 
-    init(service: BeerDetailService = BeerDetailService()) {
+    // MARK: - Initializers
+    init(service: BeerDetailService = BeerDetailService(), beerId: Int) {
         self.service = service
+        self.beerId = beerId
+        self.isBeerSaved = service.isBeerIdentifierStored(beerId: beerId)
     }
 
-    deinit {
-        delegate = nil
-    }
+    // MARK: - Public Methodes
+    public func getBeerDetail() {
+        let group = DispatchGroup()
 
-    public func getBeerDetail(using id: Int) {
-        service.fetchDetail(of: id) { [weak self] result in
-            guard let sSelf = self else { return }
+        var beer: Beer?
+        var imageData: Data?
+
+        group.enter()
+        service.fetchDetail(of: beerId) { [weak self] result in
+            guard let sSelf = self else { group.leave(); return }
 
             switch result {
-            case .success(let beer):
-                guard let firstSafeBeer = beer.first else { return }
-                guard let safeImageUrl = firstSafeBeer.image_url else { return }
+            case .success(let beerResult):
+                
+                beer = beerResult.first
+                
+                guard let safeImageUrl = beerResult.first?.image_url else {
+                    group.leave()
+                    return
+                }
 
-                sSelf.service.downloadImage(from: safeImageUrl) { imageData in
-                    guard let safeImageData = imageData else { return }
-
-                    let beerDetailViewModel = BeerDetailViewModel.cast(from: firstSafeBeer, considering: safeImageData)
-
-                    sSelf.delegate?.loadDetails(of: beerDetailViewModel)
+                sSelf.service.downloadImage(from: safeImageUrl) { imageDataDownloaded in
+                    imageData = imageDataDownloaded
+                    group.leave()
                 }
 
             case .failure(let error):
                 NSLog("Error fetching detail of a beer: %@", error.localizedDescription)
+                group.leave()
             }
         }
+
+        group.notify(queue: .main) { [weak self] in
+            guard let sSelf = self,
+                  let beer = beer else { return }
+
+            let beerDetailViewModel = BeerDetailViewModel.cast(from: beer,
+                                                               considering: imageData)
+
+            sSelf.delegate?.loadDetails(of: beerDetailViewModel)
+
+            sSelf.isBeerSaved ? sSelf.delegate?.configureDeleteButton() : sSelf.delegate?.configureSaveButton()
+        }
+    }
+
+    public func saveBeer() {
+        service.storeBeerIdentifier(beerId: beerId)
+    }
+
+    public func deleteBeer() {
+        service.removeBeerIdentifierStored(beerId: beerId)
     }
 }

@@ -8,12 +8,11 @@
 import Foundation
 
 protocol BeerListServiceProtocol {
-    var apiClient: APIClientProtocol { get }
     func fetchBeers(page: Int, completion: @escaping (Result<[Beer], Error>) -> Void)
 }
 
 class BeerListService: BeerListServiceProtocol {
-    var apiClient: APIClientProtocol
+    private var apiClient: APIClientProtocol
 
     init(apiClient: APIClientProtocol = APIClient()) { self.apiClient = apiClient }
 
@@ -22,7 +21,11 @@ class BeerListService: BeerListServiceProtocol {
                                                  httpMethod: "GET",
                                                  queryItens: ["page": page,
                                                               "per_page": 20])
-
-        apiClient.request(request: endpoint.urlRequest, completion: completion)
+        do {
+            try apiClient.request(request: endpoint.asURLRequest(), completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
+        
     }
 }

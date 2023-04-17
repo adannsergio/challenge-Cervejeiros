@@ -10,5 +10,7 @@ import Foundation
 extension APIClient {
     enum ClientError: Error {
         case unknownError
+        case decodingError
+        case invalidURL
     }
 }

@@ -10,18 +10,18 @@ import XCTest
 
 class BeerListServiceTests: XCTestCase {
 
-    var service: BeerListService!
+    var sut: BeerListService!
     var mockAPIClient: MockAPIClient!
 
     override func setUp() {
         super.setUp()
         mockAPIClient = MockAPIClient()
-        service = BeerListService(apiClient: mockAPIClient)
+        sut = BeerListService(apiClient: mockAPIClient)
     }
 
     override func tearDown() {
         mockAPIClient = nil
-        service = nil
+        sut = nil
         super.tearDown()
     }
 
@@ -49,7 +49,7 @@ class BeerListServiceTests: XCTestCase {
         mockAPIClient.data = jsonData
 
         // When
-        service.fetchBeers(page: 1) { result in
+        sut.fetchBeers(page: 1) { result in
             // Then
             switch result {
             case .success(let beers):
@@ -69,7 +69,7 @@ class BeerListServiceTests: XCTestCase {
         var fetchError: Error?
 
         // When
-        service.fetchBeers(page: 1) { result in
+        sut.fetchBeers(page: 1) { result in
             switch result {
             case .success(let beers):
                 fetchedBeers = beers

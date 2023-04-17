@@ -9,21 +9,21 @@ import UIKit
 
 protocol BeerListPresenterDelegate: AnyObject {
     func newList(of beers: [BeerListViewModel])
-    func callBeerDetail(injeting beerId: Int)
+    func callBeerDetail(injecting beerId: Int)
 }
 
 class BeerListPresenter {
     weak var delegate: BeerListPresenterDelegate?
-    let service: BeerListService
+    let service: BeerListServiceProtocol
 
     private var currentPage: Int = 1
 
-    init(service: BeerListService = BeerListService()) {
+    init(service: BeerListServiceProtocol = BeerListService()) {
         self.service = service
     }
 
     func didSelect(_ beer: BeerListViewModel) {
-        delegate?.callBeerDetail(injeting: Int(beer.id))
+        delegate?.callBeerDetail(injecting: Int(beer.id))
     }
 
     func getBeers() {

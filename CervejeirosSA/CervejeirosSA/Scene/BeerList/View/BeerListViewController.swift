@@ -41,9 +41,13 @@ class BeerListViewController: UIViewController {
     override func loadView() {
         self.view = containerView
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.rightBarButtonItem = nil
+    }
 
     func additionalSetup() {
-        // TODO: - Criar um sistema de strings globais
         self.navigationItem.title = "Beer List"
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -51,16 +55,20 @@ class BeerListViewController: UIViewController {
 
 // MARK: - Presenter Delegate
 extension BeerListViewController: BeerListPresenterDelegate {
-    func callBeerDetail(injeting beerId: Int) {
-        DispatchQueue.main.async {
+    func callBeerDetail(injecting beerId: Int) {
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            
             let beerDetailViewController = BeerDetailViewController(beerId: beerId)
-            self.navigationController?.pushViewController(beerDetailViewController, animated: true)
+            sSelf.navigationController?.pushViewController(beerDetailViewController, animated: true)
         }
     }
 
     func newList(of beers: [BeerListViewModel]) {
-        DispatchQueue.main.async {
-            self.beerListDataSource.appendList(of: beers)
+        DispatchQueue.main.async { [weak self] in
+            guard let sSelf = self else { return }
+            
+            sSelf.beerListDataSource.appendList(of: beers)
         }
     }
 }
