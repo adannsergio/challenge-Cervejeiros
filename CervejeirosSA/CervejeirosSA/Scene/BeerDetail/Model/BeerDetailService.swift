@@ -37,6 +37,7 @@ class BeerDetailService: BeerDetailServiceProtocol {
         
     }
 
+    
     func downloadImage(from imageUrl: URL, completion: ((Data?) -> Void)? = nil) {
         let endpoint: APIClient.Endpoint = .init(baseUrl: imageUrl,
                                                  path: String(),
